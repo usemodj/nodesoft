@@ -1,0 +1,23 @@
+{
+    "nodesoftApp": {
+        "message" : {
+            "home": {
+                "title": "Messages",
+                "createLabel": "Créer un nouveau Message",
+                "createOrEditLabel": "Créer ou éditer un Message"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Message {{ id }} ?"
+            },
+            "detail": {
+                "title": "Message"
+            },
+            "content": "Content",
+            "root": "Root",
+            "ipaddress": "Ipaddress",
+            "user": "user",
+            "ticket": "ticket"
+        }
+    }
+}
+

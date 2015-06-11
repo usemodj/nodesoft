@@ -1,0 +1,20 @@
+{
+  "generator-jhipster": {
+    "baseName": "nodesoft",
+    "packageName": "com.usemodj.nodesoft",
+    "packageFolder": "com/usemodj/nodesoft",
+    "authenticationType": "oauth2",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "hazelcast",
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "rememberMeKey": "d2d44540b80bd3c4934604350112cda0999f8155"
+  }
+}

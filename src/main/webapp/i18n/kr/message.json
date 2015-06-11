@@ -1,0 +1,22 @@
+{
+    "nodesoftApp": {
+        "message" : {
+            "home": {
+                "title": "Messages",
+                "createLabel": "Create a new Message",
+                "createOrEditLabel": "Create or edit a Message"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Message {{ id }}?"
+            },
+            "detail": {
+                "title": "Message"
+            },
+            "content": "Content",
+            "root": "Root",
+            "ipaddress": "Ipaddress",
+            "user": "user",
+            "ticket": "ticket"
+        }
+    }
+}

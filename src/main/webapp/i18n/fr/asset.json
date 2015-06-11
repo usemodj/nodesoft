@@ -1,0 +1,26 @@
+{
+    "nodesoftApp": {
+        "asset" : {
+            "home": {
+                "title": "Assets",
+                "createLabel": "Créer un nouveau Asset",
+                "createOrEditLabel": "Créer ou éditer un Asset"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Asset {{ id }} ?"
+            },
+            "detail": {
+                "title": "Asset"
+            },
+            "viewableId": "ViewableId",
+            "viewableType": "ViewableType",
+            "contentType": "ContentType",
+            "fileSize": "FileSize",
+            "fileName": "FileName",
+            "filePath": "FilePath",
+            "alt": "Alt",
+            "position": "Position"
+        }
+    }
+}
+

@@ -1,0 +1,87 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "viewableId",
+            "fieldType": "Long",
+            "fieldNameCapitalized": "ViewableId",
+            "fieldNameUnderscored": "viewable_id",
+            "fieldInJavaBeanMethod": "ViewableId",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "viewableType",
+            "fieldType": "String",
+            "fieldNameCapitalized": "ViewableType",
+            "fieldNameUnderscored": "viewable_type",
+            "fieldInJavaBeanMethod": "ViewableType",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "contentType",
+            "fieldType": "String",
+            "fieldNameCapitalized": "ContentType",
+            "fieldNameUnderscored": "content_type",
+            "fieldInJavaBeanMethod": "ContentType",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "fileSize",
+            "fieldType": "String",
+            "fieldNameCapitalized": "FileSize",
+            "fieldNameUnderscored": "file_size",
+            "fieldInJavaBeanMethod": "FileSize",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "fileName",
+            "fieldType": "String",
+            "fieldNameCapitalized": "FileName",
+            "fieldNameUnderscored": "file_name",
+            "fieldInJavaBeanMethod": "FileName",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "filePath",
+            "fieldType": "String",
+            "fieldNameCapitalized": "FilePath",
+            "fieldNameUnderscored": "file_path",
+            "fieldInJavaBeanMethod": "FilePath",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "alt",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Alt",
+            "fieldNameUnderscored": "alt",
+            "fieldInJavaBeanMethod": "Alt",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "position",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Position",
+            "fieldNameUnderscored": "position",
+            "fieldInJavaBeanMethod": "Position",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150610010800",
+    "pagination": "pagination",
+    "validation": false
+}

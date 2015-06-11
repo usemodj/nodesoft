@@ -1,0 +1,25 @@
+{
+    "nodesoftApp": {
+        "ticket" : {
+            "home": {
+                "title": "티",
+                "createLabel": "새로운 티켓 생성",
+                "createOrEditLabel": "티켓을 생성하거나 편집"
+            },
+            "delete": {
+                "question": "티켓을 삭제하시겠습니까 {{ id }}?"
+            },
+            "view": {
+                "title": "티켓"
+            },
+            "subject": "제목",
+            "status": "상태",
+            "views": "조회",
+            "replies": "댓글",
+            "user": "사용자",
+            "lastReplier": "마지막 응답자",
+            "lastReply": "마지막 댓글",
+            "message": "메시지"
+        }
+    }
+}

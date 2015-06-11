@@ -1,0 +1,94 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "user",
+            "relationshipNameCapitalized": "User",
+            "relationshipFieldName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "User",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "lastReplier",
+            "relationshipNameCapitalized": "LastReplier",
+            "relationshipFieldName": "lastReplier",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "User",
+            "ownerSide": true
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "lastReply",
+            "relationshipNameCapitalized": "LastReply",
+            "relationshipFieldName": "lastReply",
+            "otherEntityName": "message",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "Message",
+            "ownerSide": true
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "message",
+            "relationshipNameCapitalized": "Message",
+            "relationshipFieldName": "message",
+            "otherEntityName": "message",
+            "relationshipType": "one-to-many",
+            "otherEntityNameCapitalized": "Message"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "subject",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Subject",
+            "fieldNameUnderscored": "subject",
+            "fieldInJavaBeanMethod": "Subject",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "status",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Status",
+            "fieldNameUnderscored": "status",
+            "fieldInJavaBeanMethod": "Status",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "views",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Views",
+            "fieldNameUnderscored": "views",
+            "fieldInJavaBeanMethod": "Views",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "replies",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Replies",
+            "fieldNameUnderscored": "replies",
+            "fieldInJavaBeanMethod": "Replies",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": true,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150610023605",
+    "pagination": "pagination",
+    "validation": true
+}

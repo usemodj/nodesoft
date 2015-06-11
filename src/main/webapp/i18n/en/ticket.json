@@ -1,0 +1,25 @@
+{
+    "nodesoftApp": {
+        "ticket" : {
+            "home": {
+                "title": "Tickets",
+                "createLabel": "Create a new Ticket",
+                "createOrEditLabel": "Create or edit a Ticket"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Ticket {{ id }}?"
+            },
+            "detail": {
+                "title": "Ticket"
+            },
+            "subject": "Subject",
+            "status": "Status",
+            "views": "Views",
+            "replies": "Replies",
+            "user": "user",
+            "lastReplier": "lastReplier",
+            "lastReply": "lastReply",
+            "message": "message"
+        }
+    }
+}

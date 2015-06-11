@@ -1,0 +1,86 @@
+
+<div>
+    <h2><span translate="nodesoftApp.asset.detail.title">Asset</span> {{asset.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.asset.viewableId">ViewableId</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{asset.viewableId}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.asset.viewableType">ViewableType</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{asset.viewableType}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.asset.contentType">ContentType</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{asset.contentType}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.asset.fileSize">FileSize</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{asset.fileSize}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.asset.fileName">FileName</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{asset.fileName}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.asset.filePath">FilePath</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{asset.filePath}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.asset.alt">Alt</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{asset.alt}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.asset.position">Position</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{asset.position}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="asset"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

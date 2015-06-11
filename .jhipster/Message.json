@@ -1,0 +1,66 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "user",
+            "relationshipNameCapitalized": "User",
+            "relationshipFieldName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "User",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "ticket",
+            "relationshipNameCapitalized": "Ticket",
+            "relationshipFieldName": "ticket",
+            "otherEntityName": "ticket",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Ticket",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "content",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Content",
+            "fieldNameUnderscored": "content",
+            "fieldInJavaBeanMethod": "Content",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "root",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "Root",
+            "fieldNameUnderscored": "root",
+            "fieldInJavaBeanMethod": "Root",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "ipaddress",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Ipaddress",
+            "fieldNameUnderscored": "ipaddress",
+            "fieldInJavaBeanMethod": "Ipaddress",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150525025420",
+    "pagination": "pagination",
+    "validation": true
+}

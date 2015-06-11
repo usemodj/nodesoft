@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Added the entity Ticket.
+    -->
+    <changeSet id="20150610023605" author="jhipster">
+        <createTable tableName="NS_TICKET">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="subject" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="varchar(255)"/>
+            <column name="views" type="integer"/>
+            <column name="replies" type="integer"/>
+            <column name="user_id" type="bigint"/>
+            <column name="lastreplier_id" type="bigint"/>
+            <column name="lastreply_id" type="bigint"/>
+            
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="NS_TICKET"
+                                 constraintName="fk_ticket_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="NS_USER"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastreplier_id"
+                                 baseTableName="NS_TICKET"
+                                 constraintName="fk_ticket_lastreplier_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="NS_USER"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastreply_id"
+                                 baseTableName="NS_TICKET"
+                                 constraintName="fk_ticket_lastreply_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="NS_MESSAGE"/>
+
+    </changeSet>
+</databaseChangeLog>
