@@ -10,6 +10,15 @@
                 "message": "Message",
                 "asset": "Asset",
                 "article": "Article",
+                "forum": "Forum",
+                "topic": "Topic",
+                "post": "Post",
+                "product": "Product",
+                "optionType": "OptionType",
+                "taxon": "Taxon",
+                "taxonomy": "Taxonomy",
+                "variant": "Variant",
+                "optionValue": "OptionValue",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

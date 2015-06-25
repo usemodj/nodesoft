@@ -1,0 +1,29 @@
+{
+    "nodesoftApp": {
+        "forum" : {
+            "home": {
+                "title": "포럼",
+                "createLabel": "새로운 포럼 생성",
+                "createOrEditLabel": "포럼을 새로 생성하거나 편집"
+            },
+            "delete": {
+                "question": "포럼을 삭제하시겠습니까 {{ id }}?"
+            },
+            "view": {
+                "title": "포럼"
+            },
+            "name": "포럼",
+            "description": "설명",
+            "display": "Display",
+            "lft": "Lft",
+            "rgt": "Rgt",
+            "postCount": "댓글",
+            "topicCount": "토픽",
+            "locked": "잠금",
+            "lastTopic": "최근 토픽",
+            "lastPost": "최근 댓글",
+            "parent": "상위",
+            "updatedDate": "변경일"
+        }
+    }
+}

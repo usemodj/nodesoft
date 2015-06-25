@@ -1,0 +1,20 @@
+{
+    "nodesoftApp": {
+        "optionType" : {
+            "home": {
+                "title": "OptionTypes",
+                "createLabel": "Create a new OptionType",
+                "createOrEditLabel": "Create or edit a OptionType"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete OptionType {{ id }}?"
+            },
+            "detail": {
+                "title": "OptionType"
+            },
+            "name": "Name",
+            "presentation": "Presentation",
+            "position": "Position"
+        }
+    }
+}

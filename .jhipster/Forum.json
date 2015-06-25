@@ -1,0 +1,121 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "lastTopic",
+            "relationshipNameCapitalized": "LastTopic",
+            "relationshipFieldName": "lastTopic",
+            "otherEntityName": "topic",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "Topic",
+            "ownerSide": true
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "lastPost",
+            "relationshipNameCapitalized": "LastPost",
+            "relationshipFieldName": "lastPost",
+            "otherEntityName": "post",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "Post",
+            "ownerSide": true
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "parent",
+            "relationshipNameCapitalized": "Parent",
+            "relationshipFieldName": "parent",
+            "otherEntityName": "forum",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Forum",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldInJavaBeanMethod": "Name",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Description",
+            "fieldNameUnderscored": "description",
+            "fieldInJavaBeanMethod": "Description",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "display",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Display",
+            "fieldNameUnderscored": "display",
+            "fieldInJavaBeanMethod": "Display",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "lft",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Lft",
+            "fieldNameUnderscored": "lft",
+            "fieldInJavaBeanMethod": "Lft",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "rgt",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Rgt",
+            "fieldNameUnderscored": "rgt",
+            "fieldInJavaBeanMethod": "Rgt",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "postCount",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "PostCount",
+            "fieldNameUnderscored": "post_count",
+            "fieldInJavaBeanMethod": "PostCount",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "topicCount",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "TopicCount",
+            "fieldNameUnderscored": "topic_count",
+            "fieldInJavaBeanMethod": "TopicCount",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "locked",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "Locked",
+            "fieldNameUnderscored": "locked",
+            "fieldInJavaBeanMethod": "Locked",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150613051438",
+    "pagination": "pagination",
+    "validation": true
+}

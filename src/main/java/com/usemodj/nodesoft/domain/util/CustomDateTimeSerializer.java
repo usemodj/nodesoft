@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.SerializerProvider;
  * Custom Jackson serializer for displaying Joda DateTime objects.
  */
 public class CustomDateTimeSerializer extends JsonSerializer<DateTime> {
-
     private static DateTimeFormatter formatter = DateTimeFormat
             .forPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
 

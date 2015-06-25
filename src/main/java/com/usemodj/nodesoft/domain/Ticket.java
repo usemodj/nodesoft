@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -32,6 +35,7 @@ public class Ticket extends AbstractAuditingEntity implements Serializable {
     private String subject;
 
     @Column(name = "status")
+    @Field(type=FieldType.String, store=true,index = FieldIndex.not_analyzed)
     private String status;
 
     @Column(name = "views")
@@ -40,7 +44,8 @@ public class Ticket extends AbstractAuditingEntity implements Serializable {
     @Column(name = "replies")
     private Integer replies;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
+    @Field(type=FieldType.Nested, store=true,index = FieldIndex.not_analyzed)
     private User user;
 
     @OneToOne
@@ -49,9 +54,10 @@ public class Ticket extends AbstractAuditingEntity implements Serializable {
     @OneToOne
     private Message lastReply;
 
-    @OneToMany(mappedBy = "ticket")
+    @OneToMany(mappedBy = "ticket", fetch = FetchType.EAGER)
     //@JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @Field(type=FieldType.Nested, store=true)
     private Set<Message> messages = new HashSet<>();
 
     public Ticket(){

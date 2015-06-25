@@ -1,0 +1,31 @@
+{
+    "nodesoftApp": {
+        "variant" : {
+            "home": {
+                "title": "품목",
+                "createLabel": "새로운 품목 생성",
+                "createOrEditLabel": "품목을 새로 생성하거나 편집"
+            },
+            "delete": {
+                "question": "품목을 삭제하시겠습니까 {{ id }}?"
+            },
+            "detail": {
+                "title": "품목"
+            },
+            "sku": "Sku",
+            "isMaster": "대표",
+            "deletedDate": "삭제",
+            "price": "가격",
+            "costPrice": "원가",
+            "costCurrency": "통화",
+            "position": "위치",
+            "weight": "무게",
+            "height": "높이",
+            "width": "폭",
+            "depth": "깊이",
+            "product": "상품",
+            "optionValue": "옵션타입",
+            "options": "옵션"
+        }
+    }
+}

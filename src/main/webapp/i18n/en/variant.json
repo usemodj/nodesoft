@@ -1,0 +1,31 @@
+{
+    "nodesoftApp": {
+        "variant" : {
+            "home": {
+                "title": "Variants",
+                "createLabel": "Create a new Variant",
+                "createOrEditLabel": "Create or edit a Variant"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Variant {{ id }}?"
+            },
+            "detail": {
+                "title": "Variant"
+            },
+            "sku": "Sku",
+            "isMaster": "IsMaster",
+            "deletedDate": "DeletedDate",
+            "price": "Price",
+            "costPrice": "CostPrice",
+            "costCurrency": "CostCurrency",
+            "position": "Position",
+            "weight": "Weight",
+            "height": "Height",
+            "width": "Width",
+            "depth": "Depth",
+            "product": "product",
+            "optionValue": "optionValue",
+            "options": "Options"
+        }
+    }
+}

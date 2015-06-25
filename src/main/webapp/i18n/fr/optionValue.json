@@ -1,0 +1,22 @@
+{
+    "nodesoftApp": {
+        "optionValue" : {
+            "home": {
+                "title": "OptionValues",
+                "createLabel": "Créer un nouveau OptionValue",
+                "createOrEditLabel": "Créer ou éditer un OptionValue"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le OptionValue {{ id }} ?"
+            },
+            "detail": {
+                "title": "OptionValue"
+            },
+            "name": "Name",
+            "presentation": "Presentation",
+            "position": "Position",
+            "optionType": "optionType"
+        }
+    }
+}
+

@@ -8,6 +8,7 @@ endpoints.jolokia.enabled: false
 # security configuration (this key should be unique for your application, and kept secret)
 jhipster.security.rememberme.key: d2d44540b80bd3c4934604350112cda0999f8155
 
+spring.jackson.serialization.write_dates_as_timestamps: false
 async:
     corePoolSize: 2
     maxPoolSize: 50

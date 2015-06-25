@@ -1,0 +1,234 @@
+<div>
+
+	<h2 translate="nodesoftApp.variant.home.title">Variant</h2>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<button class="btn btn-primary" data-toggle="modal"
+					data-target="#saveVariantModal" ng-click="clear()">
+					<span class="glyphicon glyphicon-flash"></span> <span
+						translate="nodesoftApp.variant.home.createLabel">Create a
+						new Variant</span>
+				</button>
+			</div>
+			<div class="col-md-8">
+				<form name="searchForm" class="form-inline">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="searchQuery"
+							id="searchQuery" placeholder="query">
+					</div>
+					<button class="btn btn-info" ng-click="search()">
+						<span class="glyphicon glyphicon-search"></span> <span>Search
+							a Variant</span>
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="saveVariantModal" tabindex="-1"
+		role="dialog" aria-labelledby="myVariantLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form name="editForm" role="form" novalidate ng-submit="save()"
+					show-validation>
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" ng-click="clear()">&times;</button>
+						<h4 class="modal-title" id="myVariantLabel"
+							translate="nodesoftApp.variant.home.createOrEditLabel">Create
+							or edit a Variant</h4>
+					</div>
+					<div class="modal-body">
+					{{product.optionTypes.length}}
+		                <div ng-show="product.optionTypes.length == 0">
+		                  <label>Option Type</label> *
+		                  <input type="hidden" name="optionType" required>
+		                  <a class="form-control btn btn-primary" ui-sref="admin.productEdit({id: $stateParams.productId})" target="product"> Select Option Types of the Product ...</a>
+		                </div>
+		                <div ng-repeat="(key, optionType) in product.optionTypes | orderBy:'position' ">
+		                    <label>Option Type </label> *: {{optionType.presentation}}
+		                    <select style="width:100%" ui-select2 ng-model="variant.optionValues[optionType.id]" placeholder="Pick a option value" required>
+		                        <option class="form-control" ng-repeat="optionValue in optionType.optionValues | orderBy:'position' " value="{{optionValue.id}}" ng-selected="variant.optionValues[optionType.id] == optionValue.id.toString()">{{optionValue.presentation}}</option>
+		                    </select>
+		                    <div ng-hide="optionType.optionValues.length > 0">
+		                      <a class="btn-primary" ui-sref="admin.optionTypeEdit({id: optionType.id})" target="option_values"> Create Option Values of {{optionType.presentation}}...</a>
+		                    </div>
+		                </div>
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label translate="nodesoftApp.variant.sku">Sku</label>* <input
+									type="text" class="form-control" name="sku"
+									ng-model="variant.sku" required>
+	
+								<div ng-show="editForm.sku.$invalid">
+									<p class="help-block" ng-show="editForm.sku.$error.required"
+										translate="entity.validation.required">This field is
+										required.</p>
+								</div>
+							</div>
+							<div class="form-group col-md-5">
+								<label translate="nodesoftApp.variant.price">Price</label> * <input
+									type="number" class="form-control" name="price"
+									ng-model="variant.price" required>
+								<div ng-show="editForm.price.$invalid">
+									<p class="help-block" ng-show="editForm.price.$error.number"
+										translate="entity.validation.number">This field should be 
+										a number.</p>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-5">
+								<label translate="nodesoftApp.variant.weight">Weight</label> <input
+									type="text" class="form-control" name="weight"
+									ng-model="variant.weight">
+
+							</div>
+							<div class="form-group col-md-5">
+								<label translate="nodesoftApp.variant.height">Height</label> <input
+									type="text" class="form-control" name="height"
+									ng-model="variant.height">
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-5">
+								<label translate="nodesoftApp.variant.width">Width</label> <input
+									type="text" class="form-control" name="width"
+									ng-model="variant.width">
+
+							</div>
+							<div class="form-group col-md-5">
+								<label translate="nodesoftApp.variant.depth">Depth</label> <input
+									type="text" class="form-control" name="depth"
+									ng-model="variant.depth">
+
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="clear()">
+							<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+								translate="entity.action.cancel">Cancel</span>
+						</button>
+						<button type="submit" ng-disabled="editForm.$invalid"
+							class="btn btn-primary">
+							<span class="glyphicon glyphicon-save"></span>&nbsp;<span
+								translate="entity.action.save">Save</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="deleteVariantConfirmation">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form name="deleteForm" ng-submit="confirmDelete(variant.id)">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" ng-click="clear()">&times;</button>
+						<h4 class="modal-title" translate="entity.delete.title">Confirm
+							delete operation</h4>
+					</div>
+					<div class="modal-body">
+						<p translate="nodesoftApp.variant.delete.question"
+							translate-values="{id: '{{variant.id}}'}">Are you sure you
+							want to delete this Variant?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="clear()">
+							<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+								translate="entity.action.cancel">Cancel</span>
+						</button>
+						<button type="submit" ng-disabled="deleteForm.$invalid"
+							class="btn btn-danger">
+							<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
+								translate="entity.action.delete">Delete</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th translate="nodesoftApp.variant.sku">Sku</th>
+					<th translate="nodesoftApp.variant.isMaster">IsMaster</th>
+					<th translate="nodesoftApp.variant.deletedDate">DeletedDate</th>
+					<th translate="nodesoftApp.variant.price">Price</th>
+					<th translate="nodesoftApp.variant.costPrice">CostPrice</th>
+					<th translate="nodesoftApp.variant.costCurrency">CostCurrency</th>
+					<th translate="nodesoftApp.variant.position">Position</th>
+					<th translate="nodesoftApp.variant.weight">Weight</th>
+					<th translate="nodesoftApp.variant.height">Height</th>
+					<th translate="nodesoftApp.variant.width">Width</th>
+					<th translate="nodesoftApp.variant.depth">Depth</th>
+					<th translate="nodesoftApp.variant.product">product</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="variant in variants">
+					<td><a ui-sref="variantDetail({id:variant.id})">{{variant.id}}</a></td>
+					<td>{{variant.sku}}</td>
+					<td>{{variant.isMaster}}</td>
+					<td>{{variant.deletedDate}}</td>
+					<td>{{variant.price}}</td>
+					<td>{{variant.costPrice}}</td>
+					<td>{{variant.costCurrency}}</td>
+					<td>{{variant.position}}</td>
+					<td>{{variant.weight}}</td>
+					<td>{{variant.height}}</td>
+					<td>{{variant.width}}</td>
+					<td>{{variant.depth}}</td>
+					<td>{{variant.product.id}}</td>
+					<td>
+						<button type="submit" ui-sref="variantDetail({id:variant.id})"
+							class="btn btn-info btn-sm">
+							<span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span
+								translate="entity.action.view"> View</span>
+						</button>
+						<button type="submit" ng-click="showUpdate(variant.id)"
+							class="btn btn-primary btn-sm">
+							<span class="glyphicon glyphicon-pencil"></span>&nbsp;<span
+								translate="entity.action.edit"> Edit</span>
+						</button>
+						<button type="submit" ng-click="delete(variant.id)"
+							class="btn btn-danger btn-sm">
+							<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
+								translate="entity.action.delete"> Delete</span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<nav>
+			<ul class="pagination">
+				<li ng-show="links['first']" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
+				<li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a>&lt;</a></li>
+				<li ng-show="page > 2" ng-click="loadPage(page - 2)"><a>{{page
+						- 2}}</a></li>
+				<li ng-show="page > 1" ng-click="loadPage(page - 1)"><a>{{page
+						- 1}}</a></li>
+				<li class="active"><a>{{page}}</a></li>
+				<li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page
+						+ 1}}</a></li>
+				<li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page
+						+ 2}}</a></li>
+				<li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
+				<li ng-show="links['last']" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
+			</ul>
+		</nav>
+	</div>
+</div>

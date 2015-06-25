@@ -2,7 +2,7 @@
     "nodesoftApp": {
         "ticket" : {
             "home": {
-                "title": "티",
+                "title": "티켓",
                 "createLabel": "새로운 티켓 생성",
                 "createOrEditLabel": "티켓을 생성하거나 편집"
             },

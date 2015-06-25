@@ -1,0 +1,198 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3 col-xs-12 col-md-push-9">
+			<div class="list-group">
+				<div class="list-group-item">
+					<strong>Menu</strong>
+				</div>
+
+				<a ng-class="{active: $state.includes('admin.productEdit')}"
+					ui-sref="admin.productEdit({id: $stateParams.id})"
+					class="list-group-item"> Product Details</a> <a
+					ng-class="{active: $state.includes('admin.variant')}"
+					ui-sref="admin.variant({productId: $stateParams.id})"
+					class="list-group-item"> Variants</a> <a
+					ng-class="{active: $state.includes('admin.asset')}"
+					ui-sref="admin.asset({productId: $stateParams.id})"
+					class="list-group-item"> Images </a>
+			</div>
+		</div>
+		<div class="col-md-9 col-xs-12 col-md-pull-3">
+			<div class="panel-body">
+				<div class="row info">
+					<div class="form-group col-xs-7 col-md-7">
+						<h2>
+							<span translate="nodesoftApp.product.detail.title">Product</span>
+							{{product.name}}
+						</h2>
+					</div>
+					<div class="form-group col-xs-5 col-md-5">
+						<button class="btn btn-primary" ui-sref="admin.product">
+							<span class="glyphicon glyphicon-arrow-left"
+								translate="entity.action.back"> Back To Products List</span>
+						</button>
+					</div>
+				</div>
+
+				<form class="form" name="editForm" ng-submit="save()" novalidate>
+					<div class="form-group">
+						<div class="row">
+							<div class="form-group col-xs-12 col-md-8">
+								<label translate="nodesoftApp.product.name">Name</label> * <input
+									class="form-control" type="text" name="name"
+									ng-model="product.name" required autofocus on-focus>
+								<div ng-show="editForm.name.$invalid">
+									<p class="help-block" ng-show="editForm.name.$error.required"
+										translate="entity.validation.required">This field is
+										required.</p>
+								</div>
+							</div>
+							<div class="form-group col-xs-6 col-md-4"
+								ng-class="{'has-error': editForm.price.$invalid}">
+								<label translate="nodesoftApp.product.masterPrice">Master
+									Price </label> * <input class="form-control" type="number" step="0.01"
+									min="0" name="price" ng-model="product.variant.price" required />
+								<p class="error" ng-show="editForm.price.$error.number"
+									translate="entity.validation.number">This field should be a
+									number.</p>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="form-group col-xs-10 col-md-7">
+								<label translate="nodesoftApp.product.slug">Slug</label> Unique
+								Key <input class="form-control" type="text"
+									ng-model="product.slug" />
+							</div>
+							<div class="form-group col-xs-5 col-md-3"
+								ng-class="{'has-error': editForm.costPrice.$invalid}">
+								<label translate="nodesoftApp.product.costPrice">Cost
+									Price</label> <input class="form-control" type="number" step="0.01"
+									min="0" name="costPrice" ng-model="product.variant.costPrice" />
+								<p class="error" ng-show="editForm.costPrice.$error.number"
+									translate="entity.validation.number">This field should be a
+									number.</p>
+							</div>
+							<div class="form-group col-xs-5 col-md-2">
+								<label translate="nodesoftApp.product.currency">Currency</label>
+								<input class="form-control" type="text"
+									ng-model="product.variant.costCurrency" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="form-group col-xs-12 col-md-8">
+								<label translate="nodesoftApp.product.properties">Properties</label>
+								<textarea class="form-control" rows="5"
+									ng-model="product.properties" markdown-editor></textarea>
+								<br /> <label translate="nodesoftApp.product.description">Description</label>
+								<textarea class="form-control" rows="10"
+									ng-model="product.description" markdown-editor></textarea>
+							</div>
+							<div class="form-group col-xs-12 col-md-4">
+								<div class="row">
+									<div class="form-group">
+										<label translate="nodesoftApp.variant.sku">SKU</label>* <input
+											class="form-control" type="text"
+											ng-model="product.variant.sku" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group"
+										ng-class="{'has-error': editForm.availableDate.$invalid}">
+										<label translate="nodesoftApp.product.availableDate">Available
+											Date</label> <input class="form-control" placeholder="yyyy-mm-dd"
+											type="date" name="availableDate"
+											ng-model="product.availableDate"  ng-model-options="{timezone: 'UTC'}" jqdatepicker/>
+										<p class="error" ng-show="editForm.availableDate.$error.date"
+											translate="entity.validation.date">This field should be a
+											date.!</p>
+									</div>
+									<div class="form-group"
+										ng-class="{'has-error': editForm.deletedDate.$invalid}">
+										<label translate="nodesoftApp.product.deletedDate">Deleted
+											Date</label> <input class="form-control" placeholder="yyyy-mm-dd"
+											type="date" name="deletedDate" ng-model="product.deletedDate"  ng-model-options="{timezone: 'UTC'}"
+											jqdatepicker />
+										<p class="error" ng-show="editForm.deletedDate.$error.date"
+											translate="entity.validation.date">This field should be a
+											date.</p>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-xs-6 col-md-6">
+										<label translate="nodesoftApp.variant.weight">Weight</label> <input
+											class="form-control" name="weight"
+											ng-model="product.variant.weight" />
+									</div>
+									<div class="form-group col-xs-6 col-md-6">
+										<label translate="nodesoftApp.variant.height">Height</label> <input
+											class="form-control" ng-model="product.variant.height" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-xs-6 col-md-6">
+										<label translate="nodesoftApp.variant.width">Width</label> <input
+											class="form-control" name="width"
+											ng-model="product.variant.width" />
+									</div>
+									<div class="form-group col-xs-6 col-md-6">
+										<label translate="nodesoftApp.variant.depth">Depth</label> <input
+											class="form-control" name="depth"
+											ng-model="product.variant.depth" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="option_types" class="form-group">
+						<label translate="nodesoftApp.product.optionType">Option
+							Types</label> <a class="btn btn-primary"
+							ui-sref="admin.optionType" target="option_types">Create
+							Option Types ...</a> <select style="width: 100%" ui-select2 multiple
+							ng-model="product.optionTypeIds" placeholder="Pick a option type">
+							<option ng-repeat="optionType in optionTypes"
+								value="{{optionType.id}}"
+								ng-selected="product.optionTypeIds.indexOf((optionType.id).toString()) > -1">{{optionType.presentation}}({{optionType.name}})</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label translate="nodesoftApp.product.taxon">Taxon</label> <select
+							style="width: 100%" ui-select2 multiple
+							ng-model="product.taxonIds" placeholder="Pick a taxon">
+							<option ng-repeat="taxon in taxons" value="{{taxon.id}}"
+								ng-selected="product.taxonIds.indexOf((taxon.id).toString()) > -1">
+								{{taxon.permalink}}</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label translate="nodesoftApp.product.metaKeywords">Meta
+							Keywords</label> <input class="form-control" type="text"
+							ng-model="product.metaKeywords" />
+					</div>
+					<div class="form-group">
+						<label translate="nodesoftApp.product.metaDescription">Meta
+							Description</label> <input class="form-control" type="text"
+							ng-model="product.metaDescription" />
+					</div>
+					<div class="form-group text-center">
+						<div class="form-group has-error" ng-show="error">{{error}}
+						</div>
+						<div class="form-group has-success" ng-show="message">
+							{{message}}</div>
+						<button class="btn btn-info" ui-sref="admin.product">
+							<span class="glyphicon glyphicon-arrow-left"
+								translate="entity.action.back"> Back To Products List</span>
+						</button>
+						<button class="btn btn-primary" type="submit"
+							ng-disabled="editForm.$invalid" translate="entity.action.save"> Save </button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>

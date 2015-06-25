@@ -1,0 +1,26 @@
+{
+    "nodesoftApp": {
+        "topic" : {
+            "home": {
+                "title": "토픽",
+                "createLabel": "새로운 토픽 생성",
+                "createOrEditLabel": "토픽을 새로 생성하거나 편집"
+            },
+            "delete": {
+                "question": "토픽을 삭제하시겠습니까 {{ id }}?"
+            },
+            "view": {
+                "title": "토픽"
+            },
+            "name": "토픽",
+            "views": "조회",
+            "replies": "댓글",
+            "locked": "잠금",
+            "sticky": "알림",
+            "forum": "포럼",
+            "user": "사용자",
+            "lastPost": "최근 댓글",
+            "content": "내용"
+        }
+    }
+}

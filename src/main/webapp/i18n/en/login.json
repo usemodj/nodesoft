@@ -1,6 +1,6 @@
 {
     "login": {
-        "title": "Authentication",
+        "title": "Log in",
         "form": {
             "password": "Password",
             "password.placeholder": "Your password",

@@ -1,0 +1,33 @@
+{
+    "nodesoftApp": {
+        "taxon" : {
+            "home": {
+                "title": "Taxons",
+                "createLabel": "Créer un nouveau Taxon",
+                "createOrEditLabel": "Créer ou éditer un Taxon"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Taxon {{ id }} ?"
+            },
+            "detail": {
+                "title": "Taxon"
+            },
+            "name": "Name",
+            "position": "Position",
+            "permalink": "Permalink",
+            "lft": "Lft",
+            "rgt": "Rgt",
+            "description": "Description",
+            "metaTitle": "MetaTitle",
+            "metaDescription": "MetaDescription",
+            "metaKeywords": "MetaKeywords",
+            "depth": "Depth",
+            "iconFileName": "IconFileName",
+            "iconContentType": "IconContentType",
+            "iconFileSize": "IconFileSize",
+            "parent": "parent",
+            "taxonomy": "taxonomy"
+        }
+    }
+}
+

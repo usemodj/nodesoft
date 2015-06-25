@@ -1,0 +1,94 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "forum",
+            "relationshipNameCapitalized": "Forum",
+            "relationshipFieldName": "forum",
+            "otherEntityName": "forum",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Forum",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "user",
+            "relationshipNameCapitalized": "User",
+            "relationshipFieldName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "User",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "lastPost",
+            "relationshipNameCapitalized": "LastPost",
+            "relationshipFieldName": "lastPost",
+            "otherEntityName": "post",
+            "relationshipType": "one-to-one",
+            "otherEntityNameCapitalized": "Post",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldInJavaBeanMethod": "Name",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "views",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Views",
+            "fieldNameUnderscored": "views",
+            "fieldInJavaBeanMethod": "Views",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "replies",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Replies",
+            "fieldNameUnderscored": "replies",
+            "fieldInJavaBeanMethod": "Replies",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "locked",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "Locked",
+            "fieldNameUnderscored": "locked",
+            "fieldInJavaBeanMethod": "Locked",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "sticky",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "Sticky",
+            "fieldNameUnderscored": "sticky",
+            "fieldInJavaBeanMethod": "Sticky",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150613053051",
+    "pagination": "pagination",
+    "validation": true
+}

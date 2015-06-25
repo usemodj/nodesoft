@@ -1,0 +1,94 @@
+
+<div>
+    <h2><span translate="nodesoftApp.forum.detail.title">Forum</span> {{forum.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.forum.name">Name</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{forum.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.forum.description">Description</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{forum.description}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.forum.display">Display</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{forum.display}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.forum.lft">Lft</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{forum.lft}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.forum.rgt">Rgt</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{forum.rgt}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.forum.postCount">PostCount</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{forum.postCount}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.forum.topicCount">TopicCount</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{forum.topicCount}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.forum.locked">Locked</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{forum.locked}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.forum.parent">parent</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{forum.parent.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="forum"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

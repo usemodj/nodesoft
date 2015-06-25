@@ -4,12 +4,13 @@
             "home": {
                 "title": "Articles",
                 "createLabel": "Create a new Article",
-                "createOrEditLabel": "Create or edit a Article"
+                "createOrEditLabel": "Create or edit a Article",
+                "editLabel": "Edit a Article"
             },
             "delete": {
                 "question": "Are you sure you want to delete Article {{ id }}?"
             },
-            "detail": {
+            "view": {
                 "title": "Article"
             },
             "subject": "Subject",

@@ -1,0 +1,287 @@
+<div>
+
+	<h2 translate="nodesoftApp.taxon.home.title">Taxon</h2>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<button class="btn btn-primary" data-toggle="modal"
+					data-target="#saveTaxonModal" ng-click="clear()">
+					<span class="glyphicon glyphicon-flash"></span> <span
+						translate="nodesoftApp.taxon.home.createLabel">Create a new
+						Taxon</span>
+				</button>
+			</div>
+			<div class="col-md-8">
+				<form name="searchForm" class="form-inline">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="searchQuery"
+							id="searchQuery" placeholder="query">
+					</div>
+					<button class="btn btn-info" ng-click="search()">
+						<span class="glyphicon glyphicon-search"></span> <span>Search
+							a Taxon</span>
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="saveTaxonModal" tabindex="-1" role="dialog"
+		aria-labelledby="myTaxonLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form name="editForm" role="form" novalidate ng-submit="save()"
+					show-validation>
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" ng-click="clear()">&times;</button>
+						<h4 class="modal-title" id="myTaxonLabel"
+							translate="nodesoftApp.taxon.home.createOrEditLabel">Create
+							or edit a Taxon</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>ID</label> <input type="text" class="form-control"
+								name="id" ng-model="taxon.id" readonly>
+						</div>
+
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.name">Name</label> <input
+								type="text" class="form-control" name="name"
+								ng-model="taxon.name" required>
+
+							<div ng-show="editForm.name.$invalid">
+								<p class="help-block" ng-show="editForm.name.$error.required"
+									translate="entity.validation.required">This field is
+									required.</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.position">Position</label> <input
+								type="number" class="form-control" name="position"
+								ng-model="taxon.position">
+
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.permalink">Permalink</label>
+							<input type="text" class="form-control" name="permalink"
+								ng-model="taxon.permalink">
+
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.lft">Lft</label> <input
+								type="number" class="form-control" name="lft"
+								ng-model="taxon.lft">
+
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.rgt">Rgt</label> <input
+								type="number" class="form-control" name="rgt"
+								ng-model="taxon.rgt">
+
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.description">Description</label>
+							<input type="text" class="form-control" name="description"
+								ng-model="taxon.description">
+
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.metaTitle">MetaTitle</label>
+							<input type="text" class="form-control" name="metaTitle"
+								ng-model="taxon.metaTitle">
+
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.metaDescription">MetaDescription</label>
+							<input type="text" class="form-control" name="metaDescription"
+								ng-model="taxon.metaDescription">
+
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.metaKeywords">MetaKeywords</label>
+							<input type="text" class="form-control" name="metaKeywords"
+								ng-model="taxon.metaKeywords">
+
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.depth">Depth</label> <input
+								type="number" class="form-control" name="depth"
+								ng-model="taxon.depth">
+
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.iconFileName">IconFileName</label>
+							<input type="text" class="form-control" name="iconFileName"
+								ng-model="taxon.iconFileName">
+
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.iconContentType">IconContentType</label>
+							<input type="text" class="form-control" name="iconContentType"
+								ng-model="taxon.iconContentType">
+
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.iconFileSize">IconFileSize</label>
+							<input type="text" class="form-control" name="iconFileSize"
+								ng-model="taxon.iconFileSize">
+
+						</div>
+
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.parent">parent</label> <select
+								class="form-control" name="parent" ng-model="taxon.parent.id"
+								ng-options="taxon.id as taxon.id for taxon in taxons">
+							</select>
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.taxon.taxonomy">taxonomy</label> <select
+								class="form-control" name="taxonomy"
+								ng-model="taxon.taxonomy.id"
+								ng-options="taxonomy.id as taxonomy.id for taxonomy in taxonomys">
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="clear()">
+							<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+								translate="entity.action.cancel">Cancel</span>
+						</button>
+						<button type="submit" ng-disabled="editForm.$invalid"
+							class="btn btn-primary">
+							<span class="glyphicon glyphicon-save"></span>&nbsp;<span
+								translate="entity.action.save">Save</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="deleteTaxonConfirmation">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form name="deleteForm" ng-submit="confirmDelete(taxon.id)">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" ng-click="clear()">&times;</button>
+						<h4 class="modal-title" translate="entity.delete.title">Confirm
+							delete operation</h4>
+					</div>
+					<div class="modal-body">
+						<p translate="nodesoftApp.taxon.delete.question"
+							translate-values="{id: '{{taxon.id}}'}">Are you sure you want
+							to delete this Taxon?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="clear()">
+							<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+								translate="entity.action.cancel">Cancel</span>
+						</button>
+						<button type="submit" ng-disabled="deleteForm.$invalid"
+							class="btn btn-danger">
+							<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
+								translate="entity.action.delete">Delete</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="table-responsive">
+		<div class="panel-body">
+			<h4>
+				<span translate="nodesoftApp.taxonomy.detail.title">Taxonomy</span>:
+				{{taxonomy.name}}
+			</h4>
+
+			<form name="myform" class="form-inline" role="form">
+				<div class="row">
+					<div class="col-md-10 col-md-push-2">
+						<h3>
+							<a href="" class="btn btn-default pull-right"
+								ng-click="collapseAll()">Collapse all</a> <a href=""
+								class="btn btn-default pull-right" ng-click="expandAll()">Expand
+								all</a>
+						</h3>
+						<br />
+						<br/>
+
+						<!-- Nested node template -->
+						<script type="text/ng-template" id="nodes_renderer.html">
+                <div ui-tree-handle class="tree-node tree-node-content bg-success" >
+                    <div class="bg-success" style="background-color: #f1fbe5;border-bottom:thin solid #aacccc" ng-show="!this.editing">
+                        <a class="btn btn-success btn-xs" ng-if="node.children && node.children.length > 0" data-nodrag ng-click="toggle(this)"><span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span></a>
+                        &nbsp; {{node.name}}
+                        <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span class="glyphicon glyphicon-plus"></span></a>
+                        <a class="pull-right btn btn-info btn-xs" data-nodrag ng-click="editItem(this)"><i class="glyphicon glyphicon-pencil"></i></a>
+                    </div>
+                    <div class="group-title angular-ui-tree-handle" data-nodrag ng-show="this.editing">
+                        <form class="form-inline" role="form">
+                            <div class="form-group col-md-8">
+                                <label class="sr-only" for="taxonName">Taxon name</label>
+                                <input type="text" class="form-control" placeholder="Taxon name" ng-model="node.name">
+                            </div>
+                            <button type="submit" class="btn btn-default" ng-click="saveItem(this)">Save</button>
+                            <button type="submit" class="btn btn-default" ng-click="cancelEditingItem(this)">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+
+                <ol ui-tree-nodes="" ng-model="node.children" ng-class="{hidden: collapsed}">
+                    <li ng-repeat="node in node.children" ui-tree-node ng-include="'nodes_renderer.html'">
+                    </li>
+                </ol>
+            </script>
+
+						<div ui-tree id="tree-root">
+							<ol ui-tree-nodes="" ng-model="taxonomy.nodes">
+								<li ng-repeat="node in taxonomy.nodes" ui-tree-node
+									ng-include="'nodes_renderer.html'"></li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<div class="form-group has-error" ng-show="error">
+					<p class="help-block">{{ error }}</p>
+				</div>
+				<div class="form-group has-success" ng-show="message">
+					<p class="help-block">{{ message }}</p>
+				</div>
+				<br/>
+				<div class="row">
+					<div class="col-xs-2 col-md-2"></div>
+					<div class="text-center col-xs-6  col-md-6">
+						<button ng-disabled="myform.$invalid" class="btn btn-primary"
+							ng-click="save()">
+							<span class="glyphicon glyphicon-send"></span>&nbsp; <span
+								translate="entity.action.save"> Save </span>
+						</button>
+					</div>
+					<div class="col-xs-4 col-md-4">
+						<a ui-sref="admin.taxonomy" class="btn btn-info"> <span
+							class="glyphicon glyphicon-chevron-left"></span> Back
+						</a> <a ui-sref="admin.taxonomyDetail({id: taxonomy.id})"
+							ui-sref-opts="{reload: true}" class="btn btn-info"> <span
+							class="glyphicon glyphicon-refresh"></span> Refresh
+						</a>
+					</div>
+				</div>
+			</form>
+			<!-- -->
+			<div class="col-md-10">
+				<h3>Data binding</h3>
+				<div class="info">{{info}}</div>
+				<pre class="code">{{ taxonomy.nodes | json }}</pre>
+			</div>
+			 <!-- -->
+		</div>
+	</div>
+</div>

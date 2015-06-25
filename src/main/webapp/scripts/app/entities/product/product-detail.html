@@ -1,0 +1,86 @@
+
+<div>
+    <h2><span translate="nodesoftApp.product.detail.title">Product</span> {{product.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.product.name">Name</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{product.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.product.properties">Properties</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{product.properties}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.product.description">Description</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{product.description}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.product.availableDate">AvailableDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{product.availableDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.product.deletedDate">DeletedDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{product.deletedDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.product.slug">Slug</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{product.slug}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.product.metaDescription">MetaDescription</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{product.metaDescription}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.product.metaKeywords">MetaKeywords</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{product.metaKeywords}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="product"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

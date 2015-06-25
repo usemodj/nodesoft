@@ -1,0 +1,139 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "product",
+            "relationshipNameCapitalized": "Product",
+            "relationshipFieldName": "product",
+            "otherEntityName": "product",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Product",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "optionValue",
+            "relationshipNameCapitalized": "OptionValue",
+            "relationshipFieldName": "optionValue",
+            "otherEntityName": "optionValue",
+            "relationshipType": "many-to-many",
+            "otherEntityNameCapitalized": "OptionValue",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "sku",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Sku",
+            "fieldNameUnderscored": "sku",
+            "fieldInJavaBeanMethod": "Sku",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "isMaster",
+            "fieldType": "Boolean",
+            "fieldNameCapitalized": "IsMaster",
+            "fieldNameUnderscored": "is_master",
+            "fieldInJavaBeanMethod": "IsMaster",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "deletedDate",
+            "fieldType": "DateTime",
+            "fieldNameCapitalized": "DeletedDate",
+            "fieldNameUnderscored": "deleted_date",
+            "fieldInJavaBeanMethod": "DeletedDate",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "price",
+            "fieldType": "BigDecimal",
+            "fieldNameCapitalized": "Price",
+            "fieldNameUnderscored": "price",
+            "fieldInJavaBeanMethod": "Price",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "costPrice",
+            "fieldType": "BigDecimal",
+            "fieldNameCapitalized": "CostPrice",
+            "fieldNameUnderscored": "cost_price",
+            "fieldInJavaBeanMethod": "CostPrice",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "costCurrency",
+            "fieldType": "String",
+            "fieldNameCapitalized": "CostCurrency",
+            "fieldNameUnderscored": "cost_currency",
+            "fieldInJavaBeanMethod": "CostCurrency",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "position",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Position",
+            "fieldNameUnderscored": "position",
+            "fieldInJavaBeanMethod": "Position",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "weight",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Weight",
+            "fieldNameUnderscored": "weight",
+            "fieldInJavaBeanMethod": "Weight",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "height",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Height",
+            "fieldNameUnderscored": "height",
+            "fieldInJavaBeanMethod": "Height",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "width",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Width",
+            "fieldNameUnderscored": "width",
+            "fieldInJavaBeanMethod": "Width",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "depth",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Depth",
+            "fieldNameUnderscored": "depth",
+            "fieldInJavaBeanMethod": "Depth",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": true,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": true,
+    "fieldsContainDateTime": true,
+    "fieldsContainDate": false,
+    "changelogDate": "20150620132539",
+    "pagination": "pagination",
+    "validation": true
+}

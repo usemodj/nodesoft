@@ -1,0 +1,152 @@
+<div>
+
+    <h2 translate="nodesoftApp.forum.home.title">Forum</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button ng-disabled="!isInAnyRole(['ROLE_ADMIN'])" class="btn btn-primary" data-toggle="modal" data-target="#saveForumModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="nodesoftApp.forum.home.createLabel">Create a new Forum</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Forum</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveForumModal" tabindex="-1" role="dialog" aria-labelledby="myForumLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myForumLabel" translate="nodesoftApp.forum.home.createOrEditLabel">Create or edit a Forum</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label translate="nodesoftApp.forum.name">Name</label>
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="forum.name" required>
+
+                            <div ng-show="editForm.name.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="nodesoftApp.forum.description">Description</label>
+                            <input type="text" class="form-control" name="description"
+                                   ng-model="forum.description">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="nodesoftApp.forum.locked">Locked</label>
+                            <input type="checkbox" class="form-control" name="locked"
+                                   ng-model="forum.locked">
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteForumConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(forum.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="nodesoftApp.forum.delete.question" translate-values="{id: '{{forum.id}}'}">Are you sure you want to delete this Forum?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="nodesoftApp.forum.name">Forum</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="forum in forums">
+                    <td class="col-md-1">{{forum.id}}</td>
+                    <td class="col-md-5"><a ui-sref="topic({forumId: forum.id})">{{forum.name}}</a> <i ng-if="item.locked" class="fa fa-thumb-tack"></i> <br/>
+                    	<small>{{forum.description}}</small></td>
+                    <td class="col-md-3"><small><span class="badge"><span translate="nodesoftApp.forum.topicCount">Topics</span>: {{forum.topicCount}}</span> <span class="badge"><span translate="nodesoftApp.forum.postCount">Posts</span>: {{forum.postCount}}</span></small><br/>
+                            <small ng-if="forum.lastTopic"><span class="btn btn-default btn-xs"><span translate="nodesoftApp.forum.updatedDate">Updated</span>: {{forum.lastTopic.lastModifiedDate | date:'yyyy-MM-dd hh:mm:ss'}}({{forum.lastTopic.lastModifiedDate | relativeDate}})</span>
+                            <span translate="nodesoftApp.forum.lastTopic">Last Topic</span>:<a ui-sref="topicView({forumId: forum.id, id: forum.lastTopic.id})">{{forum.lastTopic.name}}</a></small></td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="topic({forumId: forum.id})"
+                                class="btn btn-info btn-xs">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit" ng-show="isInAnyRole(['ROLE_ADMIN'])"
+                                ng-click="showUpdate(forum.id)"
+                                class="btn btn-primary btn-xs">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit" ng-show="isInAnyRole(['ROLE_ADMIN'])"
+                                ng-click="delete(forum.id)"
+                                class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pagination">
+                <li ng-show="links['first']" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
+                <li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a>&lt;</a></li>
+                <li ng-show="page > 2" ng-click="loadPage(page - 2)"><a>{{page - 2}}</a></li>
+                <li ng-show="page > 1" ng-click="loadPage(page - 1)"><a>{{page - 1}}</a></li>
+                <li class="active"><a>{{page}}</a></li>
+                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 1}}</a></li>
+                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 2}}</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
+                <li ng-show="links['last']" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

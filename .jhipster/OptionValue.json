@@ -1,0 +1,53 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "optionType",
+            "relationshipNameCapitalized": "OptionType",
+            "relationshipFieldName": "optionType",
+            "otherEntityName": "optionType",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "OptionType",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldInJavaBeanMethod": "Name",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "presentation",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Presentation",
+            "fieldNameUnderscored": "presentation",
+            "fieldInJavaBeanMethod": "Presentation",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "position",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Position",
+            "fieldNameUnderscored": "position",
+            "fieldInJavaBeanMethod": "Position",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150620133051",
+    "pagination": "pager",
+    "validation": false
+}

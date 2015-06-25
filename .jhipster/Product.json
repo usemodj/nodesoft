@@ -1,0 +1,110 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "optionType",
+            "relationshipNameCapitalized": "OptionType",
+            "relationshipFieldName": "optionType",
+            "otherEntityName": "optionType",
+            "relationshipType": "many-to-many",
+            "otherEntityNameCapitalized": "OptionType",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "taxon",
+            "relationshipNameCapitalized": "Taxon",
+            "relationshipFieldName": "taxon",
+            "otherEntityName": "taxon",
+            "relationshipType": "many-to-many",
+            "otherEntityNameCapitalized": "Taxon",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldInJavaBeanMethod": "Name",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "properties",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Properties",
+            "fieldNameUnderscored": "properties",
+            "fieldInJavaBeanMethod": "Properties",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Description",
+            "fieldNameUnderscored": "description",
+            "fieldInJavaBeanMethod": "Description",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "availableDate",
+            "fieldType": "LocalDate",
+            "fieldNameCapitalized": "AvailableDate",
+            "fieldNameUnderscored": "available_date",
+            "fieldInJavaBeanMethod": "AvailableDate",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "deletedDate",
+            "fieldType": "DateTime",
+            "fieldNameCapitalized": "DeletedDate",
+            "fieldNameUnderscored": "deleted_date",
+            "fieldInJavaBeanMethod": "DeletedDate",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "slug",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Slug",
+            "fieldNameUnderscored": "slug",
+            "fieldInJavaBeanMethod": "Slug",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "metaDescription",
+            "fieldType": "String",
+            "fieldNameCapitalized": "MetaDescription",
+            "fieldNameUnderscored": "meta_description",
+            "fieldInJavaBeanMethod": "MetaDescription",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "metaKeywords",
+            "fieldType": "String",
+            "fieldNameCapitalized": "MetaKeywords",
+            "fieldNameUnderscored": "meta_keywords",
+            "fieldInJavaBeanMethod": "MetaKeywords",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": true,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": true,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": true,
+    "fieldsContainDate": false,
+    "changelogDate": "20150620052207",
+    "pagination": "pagination",
+    "validation": false
+}

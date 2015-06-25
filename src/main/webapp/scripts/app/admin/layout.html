@@ -1,0 +1,11 @@
+<div class="container-fluid">
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li ng-class="{active: $state.includes('admin.order')}"><a ui-sref="admin.order"><span class="glyphicon glyphicon-shopping-cart"></span> Orders</a></li>
+        <li ng-class="{active: $state.includes('admin.product')}"><a ui-sref="admin.product"><span class="glyphicon glyphicon-th-large"></span> Products</a></li>
+        <li ng-class="{active: $state.includes('admin.user')}"><a ui-sref="admin.user"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+    </ul>
+    <div class="row">
+       <div class="col-md-12" ui-view="content"></div>
+    </div>
+</div>

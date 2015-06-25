@@ -9,16 +9,20 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css assets/styles/vendor.css -->
         <!-- bower:css -->
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
         <link rel="stylesheet" href="bower_components/bootstrap-markdown/css/bootstrap-markdown.min.css" />
+        <link rel="stylesheet" href="bower_components/select2/select2.css" />
+        <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
         <!-- endbower -->
+    	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    	<link rel="stylesheet" href="bower_components/jqueryuibootstrap/css/custom-theme/jquery-ui-1.10.3.custom.css" />
         <!-- endbuild -->
         <!-- build:css assets/styles/main.css -->
         <link rel="stylesheet" href="assets/styles/main.css">
         <!-- endbuild -->
     </head>
     <body ng-app="nodesoftApp">
+    
         <!--[if lt IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -67,9 +71,17 @@
         <script src="bower_components/angular-markdown-filter/markdown.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/select2/select2.js"></script>
+        <script src="bower_components/angular-ui-select2/src/select2.js"></script>
+        <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+        <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+        <script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
         <!-- endbower -->
         <script src="bower_components/bootstrap-markdown/js/bootstrap-markdown.js"></script>
     	<script src="bower_components/bootstrap-markdown/locale/bootstrap-markdown.kr.js"></script>
+    	<script src="bower_components/jquery-ui/ui/datepicker.js"></script>
+    	<script src="bower_components/jquery-ui/ui/i18n/datepicker-ko.js"></script>
+    	<!-- script src="bower_components/jquery-ui/ui/i18n/datepicker-en-GB.js"></script-->
         <!-- endbuild -->
 
 
@@ -98,8 +110,11 @@
         <script src="scripts/components/util/truncate.filter.js"></script>
         <script src="scripts/components/util/base64.service.js"></script>
         <script src="scripts/components/util/parse-links.service.js"></script>
+        <script src="scripts/components/util/todate.filter.js"></script>
+        <script src="scripts/components/util/tree.js"></script>
         <script src="scripts/components/fileupload/fileupload.directive.js"></script>
         <script src="scripts/components/markdown-editor/markdown-editor.directive.js"></script>
+        <script src="scripts/components/datepicker/jqdatepicker.directive.js"></script>
         
         <script src="scripts/app/account/account.js"></script>
         <script src="scripts/app/account/activate/activate.js"></script>
@@ -145,22 +160,50 @@
         <script src="scripts/components/entities/ticket/ticket.service.js"></script>
         <script src="scripts/components/entities/ticket/ticket.search.service.js"></script>
         
-        <script src="scripts/app/entities/message/message.js"></script>
-        <script src="scripts/app/entities/message/message.controller.js"></script>
-        <script src="scripts/app/entities/message/message-detail.controller.js"></script>
-        <script src="scripts/components/entities/message/message.service.js"></script>
-        <script src="scripts/components/entities/message/message.search.service.js"></script>
-        <script src="scripts/app/entities/asset/asset.js"></script>
-        <script src="scripts/app/entities/asset/asset.controller.js"></script>
+	    <script src="scripts/app/news/article.js"></script>
+        <script src="scripts/app/news/article.controller.js"></script>
+        <script src="scripts/components/entities/article/article.service.js"></script>
+        <script src="scripts/components/entities/article/article.search.service.js"></script>
+        <script src="scripts/app/forum/forum.js"></script>
+        <script src="scripts/app/forum/forum.controller.js"></script>
+        <script src="scripts/components/entities/forum/forum.service.js"></script>
+        <script src="scripts/components/entities/forum/forum.search.service.js"></script>
+        
+        <script src="scripts/app/topic/topic.js"></script>
+        <script src="scripts/app/topic/topic.controller.js"></script>
+        <script src="scripts/components/entities/topic/topic.service.js"></script>
+        <script src="scripts/components/entities/topic/topic.search.service.js"></script>
+        
+        <script src="scripts/app/admin/product/product.js"></script>
+        <script src="scripts/app/admin/product/product.controller.js"></script>
+        <script src="scripts/components/entities/product/product.service.js"></script>
+        <script src="scripts/components/entities/product/product.search.service.js"></script>
+
+        <script src="scripts/app/admin/variant/variant.js"></script>
+        <script src="scripts/app/admin/variant/variant.controller.js"></script>
+        <script src="scripts/app/entities/variant/variant-detail.controller.js"></script>
+        <script src="scripts/components/entities/variant/variant.service.js"></script>
+        <script src="scripts/components/entities/variant/variant.search.service.js"></script>
+        
+        <script src="scripts/app/admin/optionType/optionType.js"></script>
+        <script src="scripts/app/admin/optionType/optionType.controller.js"></script>
+        <script src="scripts/components/entities/optionType/optionType.service.js"></script>
+        <script src="scripts/components/entities/optionType/optionType.search.service.js"></script>
+        <script src="scripts/components/entities/optionValue/optionValue.service.js"></script>
+        
+        <script src="scripts/app/admin/taxonomy/taxonomy.js"></script>
+        <script src="scripts/app/admin/taxonomy/taxonomy.controller.js"></script>
+        <script src="scripts/app/admin/taxonomy/taxon.controller.js"></script>
+        <script src="scripts/components/entities/taxonomy/taxonomy.service.js"></script>
+        <script src="scripts/components/entities/taxonomy/taxonomy.search.service.js"></script>
+        <script src="scripts/components/entities/taxon/taxon.service.js"></script>
+
+        <script src="scripts/app/admin/asset/asset.js"></script>
+        <script src="scripts/app/admin/asset/asset.controller.js"></script>
         <script src="scripts/app/entities/asset/asset-detail.controller.js"></script>
         <script src="scripts/components/entities/asset/asset.service.js"></script>
         <script src="scripts/components/entities/asset/asset.search.service.js"></script>
-        
-        <script src="scripts/app/entities/article/article.js"></script>
-        <script src="scripts/app/entities/article/article.controller.js"></script>
-        <script src="scripts/app/entities/article/article-detail.controller.js"></script>
-        <script src="scripts/components/entities/article/article.service.js"></script>
-        <script src="scripts/components/entities/article/article.search.service.js"></script>
+
         <!-- endbuild -->
 	</body>
 </html>

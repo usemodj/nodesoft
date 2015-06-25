@@ -1,0 +1,22 @@
+{
+    "nodesoftApp": {
+        "optionValue" : {
+            "home": {
+                "title": "옵션값",
+                "createLabel": "새로운 옵션값 생성",
+                "createOrEditLabel": "옵션값을 새로 생성하거나 편집"
+            },
+            "delete": {
+                "question": "옵션값을 삭제하시겠습니까 {{ id }}?"
+            },
+            "detail": {
+                "title": "옵션값"
+            },
+            "name": "옵션값",
+            "presentation": "표시",
+            "position": "순서",
+            "optionType": "옵션타입",
+            "add": "옵션값 추가"
+        }
+    }
+}

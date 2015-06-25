@@ -1,11 +1,14 @@
 package com.usemodj.nodesoft.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.joda.time.DateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -32,6 +35,7 @@ public class Message extends AbstractAuditingEntity implements Serializable {
     @Lob
     @NotNull
     @Column(name = "content", nullable = false)
+    @Field(type=FieldType.String, store=true)
     private String content;
 
     @Column(name = "root")
@@ -47,8 +51,9 @@ public class Message extends AbstractAuditingEntity implements Serializable {
     @JsonIgnore
     private Ticket ticket;
 
-    //@Transient
-    @OneToMany(mappedBy = "viewableId")
+    //@OneToMany(mappedBy = "viewable")
+    @Transient
+    @JsonProperty
     private List<Asset> assets;
     
     public Message(){

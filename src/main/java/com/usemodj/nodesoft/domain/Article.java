@@ -1,9 +1,11 @@
 package com.usemodj.nodesoft.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.joda.time.DateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -11,6 +13,7 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.Objects;
 
@@ -42,7 +45,24 @@ public class Article extends AbstractAuditingEntity implements Serializable {
 
     @ManyToOne
     private User user;
+    
+    //@OneToMany(mappedBy = "viewableId")
+    @Transient
+    @JsonProperty
+    private List<Asset> assets;
 
+    public Article(){
+    	
+    }
+    public Article(String subject, String summary, String content, String imgUrl, User user){
+    	this.subject = subject;
+    	this.summary = summary;
+    	this.content = content;
+    	this.imgUrl = imgUrl;
+    	this.user = user;
+    	this.setCreatedDate( DateTime.now());
+    }
+    
     public Long getId() {
         return id;
     }
@@ -91,7 +111,14 @@ public class Article extends AbstractAuditingEntity implements Serializable {
         this.user = user;
     }
 
-    @Override
+    public List<Asset> getAssets() {
+		return assets;
+	}
+	public void setAssets(List<Asset> assets) {
+		this.assets = assets;
+	}
+	
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

@@ -46,9 +46,6 @@ angular.module('nodesoftApp')
             	  ticket: $scope.ticket
               },
               sendFieldsAs: 'json',
-              data: {
-            	  'ticket': $scope.ticket
-              },
               file: ($scope.files != null)? $scope.files: null,
               fileFormDataName: 'file'
             }).progress(function (evt) {
@@ -71,7 +68,12 @@ angular.module('nodesoftApp')
         };
 
         $scope.search = function () {
-            TicketSearch.query({query: $scope.searchQuery}, function(result) {
+        	if(!$scope.searchQuery) {
+        		$scope.loadAll();
+        		return;
+        	}
+            TicketSearch.query({query: $scope.searchQuery, page: $scope.page, per_page: 20}, function(result, headers) {
+            	$scope.links = ParseLinks.parse(headers('link'));
                 $scope.tickets = result;
             }, function(response) {
                 if(response.status === 404) {
@@ -104,7 +106,7 @@ angular.module('nodesoftApp')
           });
         });
         Auth.identity(false, function(account){
-        	console.log(account);
+        	//console.log(account);
         	$scope.user = account;
         });
 
@@ -119,7 +121,7 @@ angular.module('nodesoftApp')
         
         $scope.replyMessage = function(form){
             $scope.newMessage.ticket_id = $stateParams.id;
-            $scope.newMessage.status = 'request';
+            $scope.newMessage.status = $scope.isInAnyRole(['ROLE_ADMIN'])? 'response': 'request';
             $scope.progress = 0;
             $scope.error = null;
             //console.log($scope.files);

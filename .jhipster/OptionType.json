@@ -1,0 +1,42 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldInJavaBeanMethod": "Name",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "presentation",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Presentation",
+            "fieldNameUnderscored": "presentation",
+            "fieldInJavaBeanMethod": "Presentation",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "position",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Position",
+            "fieldNameUnderscored": "position",
+            "fieldInJavaBeanMethod": "Position",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150620053043",
+    "pagination": "pagination",
+    "validation": false
+}

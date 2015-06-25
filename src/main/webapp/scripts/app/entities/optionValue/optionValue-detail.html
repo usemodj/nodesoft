@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="nodesoftApp.optionValue.detail.title">OptionValue</span> {{optionValue.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.optionValue.name">Name</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{optionValue.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.optionValue.presentation">Presentation</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{optionValue.presentation}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.optionValue.position">Position</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{optionValue.position}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.optionValue.optionType">optionType</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{optionValue.optionType.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="optionValue"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

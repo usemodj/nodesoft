@@ -3,12 +3,14 @@ package com.usemodj.nodesoft.config;
 import com.usemodj.nodesoft.security.AjaxLogoutSuccessHandler;
 import com.usemodj.nodesoft.security.AuthoritiesConstants;
 import com.usemodj.nodesoft.security.Http401UnauthorizedEntryPoint;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -41,6 +43,8 @@ public class OAuth2ServerConfiguration {
         @Override
         public void configure(HttpSecurity http) throws Exception {
             http
+	        	.anonymous()
+	        .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(authenticationEntryPoint)
             .and()
@@ -59,6 +63,15 @@ public class OAuth2ServerConfiguration {
                 .antMatchers("/api/register").permitAll()
                 .antMatchers("/api/account/reset_password/**").permitAll()
                 .antMatchers("/api/logs/**").hasAnyAuthority(AuthoritiesConstants.ADMIN)
+                .antMatchers(HttpMethod.GET, "/api/articles/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/_search/articles/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/forums/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/forum/topics").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/_search/forums/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/topics/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/_search/topics/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/posts/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/_search/posts/**").permitAll()
                 .antMatchers("/api/**").authenticated()
                 .antMatchers("/websocket/tracker").hasAuthority(AuthoritiesConstants.ADMIN)
                 .antMatchers("/websocket/**").permitAll()

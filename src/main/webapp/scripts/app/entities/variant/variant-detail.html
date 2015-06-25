@@ -1,0 +1,118 @@
+
+<div>
+    <h2><span translate="nodesoftApp.variant.detail.title">Variant</span> {{variant.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.variant.sku">Sku</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{variant.sku}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.variant.isMaster">IsMaster</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{variant.isMaster}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.variant.deletedDate">DeletedDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{variant.deletedDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.variant.price">Price</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{variant.price}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.variant.costPrice">CostPrice</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{variant.costPrice}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.variant.costCurrency">CostCurrency</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{variant.costCurrency}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.variant.position">Position</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{variant.position}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.variant.weight">Weight</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{variant.weight}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.variant.height">Height</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{variant.height}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.variant.width">Width</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{variant.width}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.variant.depth">Depth</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{variant.depth}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.variant.product">product</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{variant.product.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="variant"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <!--
+        Added the entity Forum.
+    -->
+    <changeSet id="20150613051438" author="jhipster">
+        <createTable tableName="NS_FORUM">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="description" type="varchar(255)"/>
+            <column name="display" type="integer"/>
+            <column name="lft" type="integer"/>
+            <column name="rgt" type="integer"/>
+            <column name="post_count" type="integer"/>
+            <column name="topic_count" type="integer"/>
+            <column name="locked" type="bit"/>
+            <column name="lasttopic_id" type="bigint"/>
+            <column name="lastpost_id" type="bigint"/>
+            <column name="parent_id" type="bigint"/>
+
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </createTable>
+        <!-- 
+        <addForeignKeyConstraint baseColumnNames="lasttopic_id"
+                                 baseTableName="NS_FORUM"
+                                 constraintName="fk_forum_lasttopic_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="NS_TOPIC"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastpost_id"
+                                 baseTableName="NS_FORUM"
+                                 constraintName="fk_forum_lastpost_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="NS_POST"/>
+		 
+        <addForeignKeyConstraint baseColumnNames="parent_id"
+                                 baseTableName="NS_FORUM"
+                                 constraintName="fk_forum_parent_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="NS_FORUM"/>
+		-->
+    </changeSet>
+</databaseChangeLog>

@@ -4,12 +4,24 @@
         "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
         "menu": {
             "home": "Home",
+            "news": "News",
+            "forum": "Community",
+            "support": "Support",
             "entities": {
                 "main": "Entities",
                 "ticket": "Ticket",
                 "message": "Message",
                 "asset": "Asset",
                 "article": "Article",
+                "forum": "Forum",
+                "topic": "Topic",
+                "post": "Post",
+                "product": "Product",
+                "optionType": "OptionType",
+                "taxon": "Taxon",
+                "taxonomy": "Taxonomy",
+                "variant": "Variant",
+                "optionValue": "OptionValue",
                 "additionalEntity": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -23,6 +35,7 @@
             },
             "admin": {
                 "main": "Administration",
+                "product": "Product",
                 "tracker": "User tracker",
                 "metrics": "Metrics",
                 "health": "Health",
@@ -70,7 +83,9 @@
                     "minlength": "Your e-mail is required to be at least 5 characters.",
                     "maxlength": "Your e-mail cannot be longer than 50 characters."
                 }
-            }
+            },
+            "locked": "Only show by Admin or Writer"
+            
         }
     },
     "entity": {
@@ -80,7 +95,10 @@
             "delete": "Delete",
             "edit": "Edit",
             "save": "Save",
-            "view": "View"
+            "view": "View",
+            "clone": "Clone",
+            "refresh": "Refresh",
+            "active": "Active"
         },
         "detail": {
             "field": "Field",
@@ -97,7 +115,8 @@
             "max": "This field cannot be more than {{max}}.",
             "pattern": "This field should follow pattern {{pattern}}.",
             "number": "This field should be a number.",
-            "datetimelocal": "This field should be a date and time."
+            "datetimelocal": "This field should be a date and time.",
+            "date": "This field should be a date."
         }
     },
     "footer": "This is your footer"

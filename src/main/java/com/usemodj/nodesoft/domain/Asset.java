@@ -1,17 +1,48 @@
 package com.usemodj.nodesoft.domain;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-
-import java.io.Serializable;
-import java.util.Objects;
+import com.usemodj.nodesoft.domain.dto.AssetDTO;
 
 /**
  * A Asset.
  */
+@SqlResultSetMapping(name="AssetDTOMapping",
+classes={
+@ConstructorResult(
+	targetClass = AssetDTO.class,
+	columns = {
+		@ColumnResult(name = "id", type=Long.class),
+		@ColumnResult(name = "viewable_id", type=Long.class),
+		@ColumnResult(name = "viewable_type", type=String.class),
+		@ColumnResult(name = "file_name", type=String.class),
+		@ColumnResult(name = "file_path", type=String.class),
+		@ColumnResult(name = "alt", type=String.class),
+		@ColumnResult(name = "position", type=Integer.class),
+		@ColumnResult(name = "sku", type=String.class),
+		@ColumnResult(name = "options", type=String.class),
+		@ColumnResult(name = "price", type=BigDecimal.class),
+		@ColumnResult(name = "cost_price", type=BigDecimal.class)
+	}
+)	
+})
+
 @Entity
 @Table(name = "NS_ASSET")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)

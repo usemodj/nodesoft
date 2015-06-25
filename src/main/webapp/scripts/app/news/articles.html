@@ -1,0 +1,141 @@
+<div>
+
+    <h2 translate="nodesoftApp.article.home.title">Article</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button ng-show="isInAnyRole(['ROLE_ADMIN'])" class="btn btn-primary" data-toggle="modal" data-target="#saveArticleModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="nodesoftApp.article.home.createLabel">Create a new Article</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Article</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveArticleModal" tabindex="-1" role="dialog" aria-labelledby="myArticleLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myArticleLabel" translate="nodesoftApp.article.home.createLabel">Create a new Article</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label translate="nodesoftApp.article.subject">Subject *</label>
+                            <input type="text" class="form-control" name="subject"
+                                   ng-model="article.subject" required>
+
+                            <div ng-show="editForm.subject.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.subject.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="nodesoftApp.article.imgUrl">ImgUrl</label>
+                            <input type="text" class="form-control" name="imgUrl"
+                                   ng-model="article.imgUrl">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="nodesoftApp.article.summary">Summary</label>
+                            <textarea class="form-control" name="summary"
+                                   ng-model="article.summary"></textarea>
+
+                        </div>
+                       
+                        <div class="form-group">
+                            <label translate="nodesoftApp.article.content">Content</label>
+                            <textarea class="form-control" name="content" markdown-editor
+                               rows="8"  ng-model="article.content"></textarea>
+
+                        </div>
+
+				        <div ng-include="" src="'scripts/app/include/input_file.html'"></div>
+				        
+				        <div class="form-group has-info" ng-show="progress">
+				            <p class="help-block">Progress... {{ progress }}%</p>
+				        </div>
+				        <div class="form-group has-error" ng-show="error">
+				          <p class="help-block">{{ error }}</p>
+				        </div>
+				        <div class="form-group has-success" ng-show="success">
+				            <p class="help-block">{{ message }}</p>
+				        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteArticleConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(article.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="nodesoftApp.article.delete.question" translate-values="{id: '{{article.id}}'}">Are you sure you want to delete this Article?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+	<div class="row"  infinite-scroll="loadPage(page + 1)" infinite-scroll-disabled="links['last'] == page">
+	    <div ng-repeat="article in articles">
+	      <div class="col-sm-4 col-xs-12">
+	            <div class="panel panel-default">
+	              <div class="panel-thumbnail"><a ng-show="article.imgUrl" ui-sref="articleView({id: article.id})"><img width="100%" ng-src="{{article.imgUrl}}" class="img-responsive"></a></div>
+	              <div class="panel-body">
+	                <p class="lead"><a ui-sref="articleView({id: article.id})">{{article.subject}}</a></p>
+	                <p>{{article.createdDate | date:'yyyy-MM-dd hh:mm:ss'}}</p>
+	                <p>{{article.summary}}</p>
+	
+	                <p>
+	                  <a ng-show="isInAnyRole(['ROLE_ADMIN'])" ng-confirm-click="Are you sure?" ng-click="delete(article.id)"
+	                     class="btn btn-default btn-xs" data-toggle="popover" data-trigger="hover" data-placement="bottom" title="Admin is allowed!">
+	                    <span class="glyphicon glyphicon-remove"></span> Delete </a>
+	                </p>
+	              </div>
+	            </div>
+	
+	      </div><!-- /col -->
+	    </div><!--/ng-repeat -->
+	
+	</div><!--/row-->
+
+</div>

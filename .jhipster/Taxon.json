@@ -1,0 +1,156 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "parent",
+            "relationshipNameCapitalized": "Parent",
+            "relationshipFieldName": "parent",
+            "otherEntityName": "taxon",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Taxon",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "taxonomy",
+            "relationshipNameCapitalized": "Taxonomy",
+            "relationshipFieldName": "taxonomy",
+            "otherEntityName": "taxonomy",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Taxonomy",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Name",
+            "fieldNameUnderscored": "name",
+            "fieldInJavaBeanMethod": "Name",
+            "fieldValidate": true,
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "position",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Position",
+            "fieldNameUnderscored": "position",
+            "fieldInJavaBeanMethod": "Position",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "permalink",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Permalink",
+            "fieldNameUnderscored": "permalink",
+            "fieldInJavaBeanMethod": "Permalink",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "lft",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Lft",
+            "fieldNameUnderscored": "lft",
+            "fieldInJavaBeanMethod": "Lft",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "rgt",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Rgt",
+            "fieldNameUnderscored": "rgt",
+            "fieldInJavaBeanMethod": "Rgt",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Description",
+            "fieldNameUnderscored": "description",
+            "fieldInJavaBeanMethod": "Description",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "metaTitle",
+            "fieldType": "String",
+            "fieldNameCapitalized": "MetaTitle",
+            "fieldNameUnderscored": "meta_title",
+            "fieldInJavaBeanMethod": "MetaTitle",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "metaDescription",
+            "fieldType": "String",
+            "fieldNameCapitalized": "MetaDescription",
+            "fieldNameUnderscored": "meta_description",
+            "fieldInJavaBeanMethod": "MetaDescription",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "metaKeywords",
+            "fieldType": "String",
+            "fieldNameCapitalized": "MetaKeywords",
+            "fieldNameUnderscored": "meta_keywords",
+            "fieldInJavaBeanMethod": "MetaKeywords",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "depth",
+            "fieldType": "Integer",
+            "fieldNameCapitalized": "Depth",
+            "fieldNameUnderscored": "depth",
+            "fieldInJavaBeanMethod": "Depth",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "iconFileName",
+            "fieldType": "String",
+            "fieldNameCapitalized": "IconFileName",
+            "fieldNameUnderscored": "icon_file_name",
+            "fieldInJavaBeanMethod": "IconFileName",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "iconContentType",
+            "fieldType": "String",
+            "fieldNameCapitalized": "IconContentType",
+            "fieldNameUnderscored": "icon_content_type",
+            "fieldInJavaBeanMethod": "IconContentType",
+            "fieldValidate": false
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "iconFileSize",
+            "fieldType": "String",
+            "fieldNameCapitalized": "IconFileSize",
+            "fieldNameUnderscored": "icon_file_size",
+            "fieldInJavaBeanMethod": "IconFileSize",
+            "fieldValidate": false
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150620055226",
+    "pagination": "pager",
+    "validation": true
+}

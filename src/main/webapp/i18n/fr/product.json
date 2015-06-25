@@ -1,0 +1,28 @@
+{
+    "nodesoftApp": {
+        "product" : {
+            "home": {
+                "title": "Products",
+                "createLabel": "Créer un nouveau Product",
+                "createOrEditLabel": "Créer ou éditer un Product"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Product {{ id }} ?"
+            },
+            "detail": {
+                "title": "Product"
+            },
+            "name": "Name",
+            "properties": "Properties",
+            "description": "Description",
+            "availableDate": "AvailableDate",
+            "deletedDate": "DeletedDate",
+            "slug": "Slug",
+            "metaDescription": "MetaDescription",
+            "metaKeywords": "MetaKeywords",
+            "optionType": "optionType",
+            "taxon": "taxon"
+        }
+    }
+}
+

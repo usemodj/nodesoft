@@ -1,0 +1,161 @@
+<div>
+
+	<h2 translate="nodesoftApp.asset.home.title">Asset</h2>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<button class="btn btn-primary" data-toggle="modal"
+					data-target="#saveAssetModal" ng-click="clear()">
+					<span class="glyphicon glyphicon-flash"></span> <span
+						translate="nodesoftApp.asset.home.createLabel">Create a new
+						Asset</span>
+				</button>
+			</div>
+			<div class="col-md-8">
+				<form name="searchForm" class="form-inline">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="searchQuery"
+							id="searchQuery" placeholder="query">
+					</div>
+					<button class="btn btn-info" ng-click="search()">
+						<span class="glyphicon glyphicon-search"></span> <span>Search
+							a Asset</span>
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="saveAssetModal" tabindex="-1" role="dialog"
+		aria-labelledby="myAssetLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form name="editForm" role="form" novalidate ng-submit="save()">
+
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" ng-click="clear()">&times;</button>
+						<h4 class="modal-title" id="myAssetLabel"
+							translate="nodesoftApp.asset.home.createOrEditLabel">Create
+							or edit a Asset</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label translate="nodesoftApp.asset.fileName">FileName</label> <input
+								class="form-control btn-xs" type="file" file-upload multiple
+								accept="image/*">
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.asset.alt">Alt</label> <input
+								type="text" class="form-control" name="alt" ng-model="asset.alt">
+
+						</div>
+						<div class="form-group">
+							<label translate="nodesoftApp.variant.detail.title">Variant</label>
+							<select style='width: 90%' class="form-control"
+								ng-model="asset.viewableId">
+								<option value="{{product.variant.id}}">-- All --</option>
+								<option ng-repeat="variant in variants" value="{{variant.id}}">{{variant.options}}</option>
+							</select>
+
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="clear()">
+							<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+								translate="entity.action.cancel">Cancel</span>
+						</button>
+						<button type="submit" ng-disabled="editForm.$invalid"
+							class="btn btn-primary">
+							<span class="glyphicon glyphicon-save"></span>&nbsp;<span
+								translate="entity.action.save">Save</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="deleteAssetConfirmation">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form name="deleteForm" ng-submit="confirmDelete(asset.id)">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true" ng-click="clear()">&times;</button>
+						<h4 class="modal-title" translate="entity.delete.title">Confirm
+							delete operation</h4>
+					</div>
+					<div class="modal-body">
+						<p translate="nodesoftApp.asset.delete.question"
+							translate-values="{id: '{{asset.id}}'}">Are you sure you want
+							to delete this Asset?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							ng-click="clear()">
+							<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+								translate="entity.action.cancel">Cancel</span>
+						</button>
+						<button type="submit" ng-disabled="deleteForm.$invalid"
+							class="btn btn-danger">
+							<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
+								translate="entity.action.delete">Delete</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Thumbnail</th>
+					<th>Variant</th>
+					<th>Alternative Text</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody ui-sortable="sortableOptions" ng-model="assets">
+				<tr ng-repeat="asset in assets">
+					<td class="col-md-2 inline"><span
+						class="glyphicon glyphicon-list"></span> <a ng-href="/upload/{{asset.filePath}}" target="image"><img height="50"
+						ng-src="/upload/{{asset.filePath}}" /></a> 
+					</td>
+					<td style="width: 300px" class="col-md-5"> {{asset.viewableId
+						== product.variant.id ? 'All': asset.options}}<br />{{asset.price
+						| currency}} (<s>{{asset.costPrice | currency}}</s>)
+					</td>
+					<td style="width: 300px" class="col-md-3">{{asset.alt}}</td>
+					<td class="col-md-2 text-center">
+						<button type="submit" ng-click="showUpdate(asset.id)"
+							class="btn btn-primary btn-xs">
+							<span class="glyphicon glyphicon-pencil"></span>&nbsp;<span
+								translate="entity.action.edit"> Edit</span>
+						</button>
+						<button type="submit" ng-click="delete(asset.id)"
+							class="btn btn-danger btn-xs">
+							<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
+								translate="entity.action.delete"> Delete</span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-md-8"></div>
+			<div class="col-md-2">
+				<a ui-sref="admin.asset"
+					ui-sref-opts="{reload: true}" class="btn btn-info"> <span
+					class="glyphicon glyphicon-refresh"></span> <span translate="entity.action.refresh">Refresh</span>
+				</a>
+			</div>
+		</div>
+
+	</div>
+</div>

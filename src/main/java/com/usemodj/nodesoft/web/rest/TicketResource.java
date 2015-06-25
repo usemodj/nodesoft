@@ -7,8 +7,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -23,6 +25,7 @@ import javax.validation.Valid;
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
 
+import org.elasticsearch.index.query.QueryBuilders;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +36,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PostFilter;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,7 +54,9 @@ import com.usemodj.nodesoft.domain.User;
 import com.usemodj.nodesoft.repository.AssetRepository;
 import com.usemodj.nodesoft.repository.MessageRepository;
 import com.usemodj.nodesoft.repository.TicketRepository;
+import com.usemodj.nodesoft.repository.search.MessageSearchRepository;
 import com.usemodj.nodesoft.repository.search.TicketSearchRepository;
+import com.usemodj.nodesoft.service.TicketService;
 import com.usemodj.nodesoft.service.UserService;
 import com.usemodj.nodesoft.web.rest.util.PaginationUtil;
 
@@ -70,12 +77,16 @@ public class TicketResource {
     
     @Inject
     private MessageRepository messageRepository;
+    @Inject
+    private MessageSearchRepository messageSearchRepository;
     
     @Inject
     private AssetRepository assetRepository;
 
     @Inject
     private UserService userService;
+    @Inject
+    private TicketService ticketService;
     
     @Inject
     private Environment env;
@@ -102,12 +113,10 @@ public class TicketResource {
         ticketRepository.save(ticket);
         ticketSearchRepository.save(ticket);
         
-        //TODO: get session user object
-        //log.debug("RemoteUser : {}", request.getRemoteUser());
-        //log.debug("UserPrincipal : {}", request.getUserPrincipal());
         Message message = new Message( (String)jsonObj.get("content"), true, request.getRemoteAddr(), user, ticket);
         messageRepository.save( message);
-        
+        messageSearchRepository.save( message);
+       
         String uploadPath = env.getProperty("uploadPath");
     	Date now = new Date();
         // uploaded file saving
@@ -163,6 +172,7 @@ public class TicketResource {
         
         Message message = new Message( (String)jsonObj.get("content"), false, request.getRemoteAddr(), user, ticket);
         messageRepository.save( message);
+        messageSearchRepository.save( message);
 
         ticket.setStatus((String)jsonObj.get("status"));
         ticket.setReplies(ticket.getReplies() + 1);
@@ -233,6 +243,7 @@ public class TicketResource {
         message.setUser(user);
         message.setLastModifiedDate( DateTime.now());
         messageRepository.save( message);
+        messageSearchRepository.save( message);
 
         String uploadPath = env.getProperty("uploadPath");
     	Date now = new Date();
@@ -314,7 +325,7 @@ public class TicketResource {
     public ResponseEntity<List<Ticket>> getAll(@RequestParam(value = "page" , required = false) Integer offset,
                                   @RequestParam(value = "per_page", required = false) Integer limit)
         throws URISyntaxException {
-        Page<Ticket> page = ticketRepository.findAll(PaginationUtil.generatePageRequest(offset, limit, Direction.DESC, "id"));
+        Page<Ticket> page = ticketService.getUserTickets(PaginationUtil.generatePageRequest(offset, limit, Direction.DESC, "id"));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/tickets", offset, limit);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -331,7 +342,7 @@ public class TicketResource {
         return Optional.ofNullable(ticketRepository.findOne(id))
                 .map(ticket -> {
                 	//Optional.ofNullable(messageRepository.findAllByTicketIdOrderByIdDesc(ticket.getId()))
-                 	Optional.ofNullable(messageRepository.fileAllWithAssetsQuery(ticket.getId()))
+                 	Optional.ofNullable(messageRepository.findAllWithAssets(ticket.getId()))
                  	  .map(messages -> {
                 		ticket.setMessages(new HashSet(messages)); 
                 		return ticket;
@@ -351,21 +362,28 @@ public class TicketResource {
     @Timed
     public void delete(@PathVariable Long id) {
         log.debug("REST request to delete Ticket : {}", id);
-        ticketRepository.delete(id);
-        ticketSearchRepository.delete(id);
+        ticketRepository.deleteWithMessages(id);
+//        ticketRepository.delete(id);
+//        ticketSearchRepository.delete(id);
     }
 
     /**
      * SEARCH  /_search/tickets/:query -> search for the ticket corresponding
      * to the query.
+     * @throws URISyntaxException 
+     * @throws UnsupportedEncodingException 
      */
-    @RequestMapping(value = "/_search/tickets/{query}",
+    @RequestMapping(value = "/_search/tickets",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Ticket> search(@PathVariable String query) {
-        return StreamSupport
-            .stream(ticketSearchRepository.search(queryString(query)).spliterator(), false)
-            .collect(Collectors.toList());
+    public ResponseEntity<List<Ticket>> search(@RequestParam("query") String query, @RequestParam(value = "page" , required = false) Integer offset,
+    		@RequestParam(value = "per_page", required = false) Integer limit) throws URISyntaxException, UnsupportedEncodingException {
+//        return StreamSupport
+//            .stream(ticketSearchRepository.search(QueryBuilders.fuzzyLikeThisQuery().likeText(query)).spliterator(), false)
+//            .collect(Collectors.toList());
+    	Page<Ticket> page = ticketSearchRepository.searchForCurrentUser(query, PaginationUtil.generatePageRequest(offset, limit));
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/_search/tickets", offset, limit, "query="+  URLEncoder.encode(query, "UTF-8"));
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 }

@@ -2,7 +2,7 @@
 
 angular.module('nodesoftApp')
     .factory('TicketSearch', function ($resource) {
-        return $resource('api/_search/tickets/:query', {}, {
+        return $resource('api/_search/tickets', {}, {
             'query': { method: 'GET', isArray: true}
         });
     });

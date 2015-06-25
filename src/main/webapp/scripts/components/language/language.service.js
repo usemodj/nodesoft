@@ -27,8 +27,7 @@ angular.module('nodesoftApp')
  They are written in English to avoid character encoding issues (not a perfect solution)
  */
     .constant('LANGUAGES', [
-        'en', 'fr'
-        ,'kr'
+        'en','kr'
         //JHipster will add new languages here
     ]
 );

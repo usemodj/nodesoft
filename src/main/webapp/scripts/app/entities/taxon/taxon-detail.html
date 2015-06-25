@@ -1,0 +1,142 @@
+
+<div>
+    <h2><span translate="nodesoftApp.taxon.detail.title">Taxon</span> {{taxon.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.name">Name</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.position">Position</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.position}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.permalink">Permalink</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.permalink}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.lft">Lft</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.lft}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.rgt">Rgt</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.rgt}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.description">Description</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.description}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.metaTitle">MetaTitle</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.metaTitle}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.metaDescription">MetaDescription</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.metaDescription}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.metaKeywords">MetaKeywords</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.metaKeywords}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.depth">Depth</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.depth}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.iconFileName">IconFileName</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.iconFileName}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.iconContentType">IconContentType</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.iconContentType}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.iconFileSize">IconFileSize</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.iconFileSize}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.parent">parent</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.parent.id}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.taxon.taxonomy">taxonomy</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{taxon.taxonomy.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="taxon"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

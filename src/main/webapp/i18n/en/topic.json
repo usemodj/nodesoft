@@ -1,0 +1,26 @@
+{
+    "nodesoftApp": {
+        "topic" : {
+            "home": {
+                "title": "Topics",
+                "createLabel": "Create a new Topic",
+                "createOrEditLabel": "Create or edit a Topic"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Topic {{ id }}?"
+            },
+            "detail": {
+                "title": "Topic"
+            },
+            "name": "Topic",
+            "views": "Views",
+            "replies": "Replies",
+            "locked": "Locked",
+            "sticky": "Sticky",
+            "forum": "Forum",
+            "user": "User",
+            "lastPost": "Last Post",
+            "content": "Content"
+        }
+    }
+}

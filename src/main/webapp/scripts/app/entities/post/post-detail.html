@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span translate="nodesoftApp.post.detail.title">Post</span> {{post.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.post.name">Name</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{post.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.post.content">Content</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{post.content}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.post.root">Root</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{post.root}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.post.user">user</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{post.user.id}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.post.forum">forum</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{post.forum.id}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.post.topic">topic</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{post.topic.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="post"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

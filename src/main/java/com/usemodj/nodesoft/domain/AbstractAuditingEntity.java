@@ -1,6 +1,10 @@
 package com.usemodj.nodesoft.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.Type;
 import org.hibernate.envers.Audited;
 import org.joda.time.DateTime;
@@ -8,12 +12,20 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-
+import org.springframework.data.elasticsearch.annotations.DateFormat;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.usemodj.nodesoft.domain.util.CustomDateTimeDeserializer;
+import com.usemodj.nodesoft.domain.util.CustomDateTimeSerializer;
 
 /**
  * Base abstract class for entities which will hold definitions for created, last modified by and created,
@@ -25,16 +37,19 @@ import javax.validation.constraints.NotNull;
 public abstract class AbstractAuditingEntity {
 
     @CreatedBy
-    @NotNull
+    //@NotNull
     @Column(name = "created_by", nullable = false, length = 50, updatable = false)
     @JsonIgnore
     private String createdBy;
 
     @CreatedDate
-    @NotNull
+    //@NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @Column(name = "created_date", nullable = false)
-    //@JsonIgnore
+    @JsonSerialize(using = CustomDateTimeSerializer.class)
+    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @Field(type = FieldType.Date, format = DateFormat.basic_date_time, index = FieldIndex.not_analyzed, store=false)
     private DateTime createdDate = DateTime.now();
 
     @LastModifiedBy
@@ -45,7 +60,10 @@ public abstract class AbstractAuditingEntity {
     @LastModifiedDate
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @Column(name = "last_modified_date")
-    //@JsonIgnore
+    @JsonSerialize(using = CustomDateTimeSerializer.class)
+    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @Field(type = FieldType.Date, format = DateFormat.basic_date_time, index = FieldIndex.not_analyzed, store=false)
     private DateTime lastModifiedDate = DateTime.now();
 
     public String getCreatedBy() {

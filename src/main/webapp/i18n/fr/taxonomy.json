@@ -1,0 +1,20 @@
+{
+    "nodesoftApp": {
+        "taxonomy" : {
+            "home": {
+                "title": "Taxonomys",
+                "createLabel": "Créer un nouveau Taxonomy",
+                "createOrEditLabel": "Créer ou éditer un Taxonomy"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Taxonomy {{ id }} ?"
+            },
+            "detail": {
+                "title": "Taxonomy"
+            },
+            "name": "Name",
+            "position": "Position"
+        }
+    }
+}
+

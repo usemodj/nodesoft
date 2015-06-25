@@ -1,0 +1,209 @@
+<div>
+
+    <h2 translate="nodesoftApp.topic.home.title">Topic </h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+            	<a class="btn btn-info" ui-sref="forum"><span class="glyphicon glyphicon-arrow-left"></span> <span translate="nodesoftApp.topic.forum">Forum</span></a>
+                <button ng-disabled="!isInAnyRole(['ROLE_USER','ROLE_ADMIN'])" class="btn btn-primary" data-toggle="modal" data-target="#saveTopicModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="nodesoftApp.topic.home.createLabel">Create a new Topic</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Topic</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myTopicLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myTopicLabel" translate="nodesoftApp.topic.home.createOrEditLabel">Create or edit a Topic</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label translate="nodesoftApp.topic.name">Topic</label>
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="topic.name" required>
+
+                            <div ng-show="editForm.name.$invalid">
+                                <p class="help-block"
+                                   ng-show="editForm.name.$error.required" translate="entity.validation.required">
+                                    This field is required.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        	<input type="hidden" class="form-control" name="postId"
+                                   ng-model="topic.post.id">
+                            <label translate="nodesoftApp.topic.content">Content</label>
+                            <textarea id="topic-editor" class="form-control" rows="9" 
+                            		ng-model="topic.post.content" markdown-editor></textarea>
+			                <div class="btn-group"
+								ng-repeat="file in topic.post.assets | orderBy:'position' ">
+								<div>
+									<a class="btn btn-default btn-xs"
+										ng-href="/upload/{{file.filePath}}" alt="{{file.fileName}}"
+										target="attachment">{{file.fileName}} ({{file.fileSize}})</a> <a
+										class="btn btn-default btn-xs" ng-click="removeFile(file)"
+										data-toggle="tooltip" data-placement="top"
+										title="Remove '{{file.fileName}}' "><i class="fa fa-trash-o"></i></a>
+								</div>
+							</div>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa fa-unlock-alt"></i><span translate="nodesoftApp.topic.locked">Locked</span>
+                            	<input type="checkbox" class="form-control" name="locked"
+                                   ng-model="topic.locked">
+							</label>
+                        </div>
+                        <div class="form-group" ng-show="isInAnyRole(['ROLE_ADMIN'])">
+                            <label><i class="fa fa-flag"></i><span translate="nodesoftApp.topic.sticky">Sticky</span>
+                            	<input type="checkbox" class="form-control" name="sticky"
+                                   ng-model="topic.sticky">
+							</label>
+                        </div>
+
+				        <div ng-include="" src="'scripts/app/include/input_file.html'"></div>
+				
+				        <div class="form-group has-info" ng-show="progress">
+				            <p class="help-block">Progress... {{ progress }}%</p>
+				        </div>
+				        <div class="form-group has-error" ng-show="error">
+				          <p class="help-block">{{ error }}</p>
+				        </div>
+				        <div class="form-group has-success" ng-show="success">
+				            <p class="help-block">{{ message }}</p>
+				        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteTopicConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(topic.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="nodesoftApp.topic.delete.question" translate-values="{id: '{{topic.id}}'}">Are you sure you want to delete this Topic?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="nodesoftApp.topic.name">Topic</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="topic in stickyTopics">
+                    <td>{{topic.id}}</td>
+                    <td><small class="badge" translate="nodesoftApp.topic.sticky">Sticky</small>:<a ui-sref="topicView({forumId:forumId, id:topic.id})">{{topic.name}}</a>
+						<i ng-if="topic.locked" class="fa fa-unlock-alt"></i><br/>
+                      <small><span class="badge">Written {{topic.email}} </span> <span class="badge">{{topic.createdDate | date:'yyyy-MM-dd hh:mm:ss'}}</span></small></td>
+                    <td><span class="badge"><span translate="nodesoftApp.topic.views">Views</span>: {{topic.views}}</span>, <span class="badge">
+                    	<span translate="nodesoftApp.topic.replies">Replies</span>: {{topic.replies}}</span><br/>
+                      <small><span translate="nodesoftApp.topic.lastPost">Last Post</span>: {{topic.lastPost.name}}</small></td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="topicView({id:topic.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit" ng-show="isInAnyRole(['ROLE_ADMIN']) || currentUser.email == topic.user.email" 
+                                ng-click="showUpdate(topic.id)"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit" ng-show="isInAnyRole(['ROLE_ADMIN']) || currentUser.email == topic.user.email" 
+                                ng-click="delete(topic.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr ng-repeat="topic in topics">
+                    <td>{{topic.id}}</td>
+                    <td><a ui-sref="topicView({forumId:topic.forum.id, id:topic.id})">{{topic.name}}</a>
+						<i ng-if="topic.locked" class="fa fa-unlock-alt"></i><br/>
+                      <small><span class="badge">Written by {{topic.user.email}}</span> <span class="badge">{{topic.createdDate | date:'yyyy-MM-dd hh:mm:ss'}}</span></small></td>
+                    <td><span class="badge"><span translate="nodesoftApp.topic.views">Views</span>: {{topic.views}}</span>, <span class="badge"><span translate="nodesoftApp.topic.replies">Replies</span>: {{topic.replies}}</span><br/>
+                      <small><span translate="nodesoftApp.topic.lastPost">Last Post</span>: {{topic.lastPost.name}}</small></td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="topicView({forumId:topic.forum.id, id:topic.id})"
+                                class="btn btn-info btn-xs">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button ng-show="isInAnyRole(['ROLE_ADMIN']) || currentUser.email == topic.user.email" type="submit"
+                                ng-click="showUpdate(topic.id)"
+                                class="btn btn-primary btn-xs">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button ng-show="isInAnyRole(['ROLE_ADMIN']) || currentUser.email == topic.user.email" type="submit"
+                                ng-click="delete(topic.id)"
+                                class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <i class="fa fa-unlock-alt"></i>: <span translate="global.messages.locked">Only show by Admin or Writer</span>
+        <nav>
+            <ul class="pagination">
+                <li ng-show="links['first']" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
+                <li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a>&lt;</a></li>
+                <li ng-show="page > 2" ng-click="loadPage(page - 2)"><a>{{page - 2}}</a></li>
+                <li ng-show="page > 1" ng-click="loadPage(page - 1)"><a>{{page - 1}}</a></li>
+                <li class="active"><a>{{page}}</a></li>
+                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 1}}</a></li>
+                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 2}}</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
+                <li ng-show="links['last']" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

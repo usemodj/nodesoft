@@ -5,6 +5,13 @@ angular.module('nodesoftApp')
         $stateProvider
             .state('admin', {
                 abstract: true,
-                parent: 'site'
+                parent: 'site',
+                url: '/admin',
+                views: {
+                    'content@': {
+                      templateUrl: 'scripts/app/admin/layout.html'
+                    }
+                  }
+
             });
     });

@@ -1,0 +1,78 @@
+
+<div>
+    <h2><span translate="nodesoftApp.topic.detail.title">Topic</span> {{topic.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.topic.name">Name</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{topic.name}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.topic.views">Views</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{topic.views}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.topic.replies">Replies</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{topic.replies}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.topic.locked">Locked</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{topic.locked}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.topic.sticky">Sticky</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{topic.sticky}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.topic.forum">forum</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{topic.forum.id}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="nodesoftApp.topic.user">user</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{topic.user.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="topic"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

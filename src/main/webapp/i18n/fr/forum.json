@@ -1,0 +1,29 @@
+{
+    "nodesoftApp": {
+        "forum" : {
+            "home": {
+                "title": "Forums",
+                "createLabel": "Créer un nouveau Forum",
+                "createOrEditLabel": "Créer ou éditer un Forum"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Forum {{ id }} ?"
+            },
+            "detail": {
+                "title": "Forum"
+            },
+            "name": "Name",
+            "description": "Description",
+            "display": "Display",
+            "lft": "Lft",
+            "rgt": "Rgt",
+            "postCount": "PostCount",
+            "topicCount": "TopicCount",
+            "locked": "Locked",
+            "lastTopic": "lastTopic",
+            "lastPost": "lastPost",
+            "parent": "parent"
+        }
+    }
+}
+

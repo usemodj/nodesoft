@@ -9,5 +9,14 @@
     <include file="classpath:config/liquibase/changelog/20150610010800_added_entity_Asset.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150610023605_added_entity_Ticket.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20150611012835_added_entity_Article.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150613051438_added_entity_Forum.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150613053051_added_entity_Topic.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150613053959_added_entity_Post.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150620052207_added_entity_Product.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150620053043_added_entity_OptionType.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150620055226_added_entity_Taxon.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150620055447_added_entity_Taxonomy.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150620132539_added_entity_Variant.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20150620133051_added_entity_OptionValue.xml" relativeToChangelogFile="false"/>
     <!-- JHipster will add liquibase changelogs here -->
 </databaseChangeLog>

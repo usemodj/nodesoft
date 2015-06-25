@@ -64,17 +64,6 @@ angular.module('nodesoftApp')
             	
             },
             
-            identity2: function(force){
-            	var deferred = $q.defer();
-            	Principal.identity(force)
-        		.then(function(account){
-        			console.log('>>auth identity account: ');
-        			console.log(account);
-        			deferred.resolve(account);
-        		}).$promise;
-            	return deferred.promise;
-            },
-            
             createAccount: function (account, callback) {
                 var cb = callback || angular.noop;
 

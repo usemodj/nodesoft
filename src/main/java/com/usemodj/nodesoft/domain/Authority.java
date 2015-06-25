@@ -32,6 +32,13 @@ public class Authority implements Serializable {
         this.name = name;
     }
 
+    public Authority(){
+    	
+    }
+    public Authority(String name){
+    	this.name = name;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) {

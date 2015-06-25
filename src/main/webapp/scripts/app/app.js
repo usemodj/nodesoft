@@ -2,11 +2,18 @@
 
 angular.module('nodesoftApp', ['LocalStorageModule', 'tmh.dynamicLocale','relativeDate','ngFileUpload',
     'ngResource', 'ui.router', 'ngCookies', 'pascalprecht.translate', 'ngCacheBuster', 'infinite-scroll',
-    'ngSanitize', 'markdown','ui.bootstrap'])
+    'ngSanitize', 'markdown','ui.bootstrap','ui.select2','ui.sortable','ui.tree'])
 
-    .run(function ($rootScope, $location, $window, $http, $state, $translate, Auth, Principal, Language, ENV, VERSION) {
+    .run(function ($rootScope, $location, $window, $http, $state, $stateParams, $translate, Auth, Principal, Language, ENV, VERSION) {
         $rootScope.ENV = ENV;
         $rootScope.VERSION = VERSION;
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
+        
+        $rootScope.isInAnyRole = function(roles){
+        	return Principal.isInAnyRole(roles);
+        },
+
         $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
             $rootScope.toState = toState;
             $rootScope.toStateParams = toStateParams;
@@ -14,6 +21,11 @@ angular.module('nodesoftApp', ['LocalStorageModule', 'tmh.dynamicLocale','relati
             if (Principal.isIdentityResolved()) {
                 Auth.authorize();
             }
+            
+            Auth.identity(false, function(account){
+            	//console.log(account);
+            	$rootScope.currentUser = account;
+            });
 
             // Update the language
             Language.getCurrent().then(function (language) {

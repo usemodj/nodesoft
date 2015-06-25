@@ -44,3 +44,36 @@ bower install bootstrap-markdown --save
 make markdown-editor.directive.js
 
 
+## jquery-ui-bootstrap
+
+bower install jqueryuibootstrap --save
+
+## jquery-ui
+
+bower install jquery-ui --save
+
+## angular-ui/ui-select2 - An AngularJS wrapper for select2
+An AngularJS wrapper for select2
+
+Install:
+ $ bower install angular-ui-select2 --save
+
+app.js:
+ var myAppModule = angular.module('MyApp', ['ui.select2']);
+ 
+## ui-sortable
+
+bower install angular-ui-sortable --sav
+
+app.js:
+ var myAppModule = angular.module('MyApp', ['ui.sortable']);
+ 
+## ui-tree
+
+bower install angular-ui-tree
+
+<link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css">
+<script type="text/javascript" src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
+
+app.js:
+  var myAppModule = angular.module('MyApp', ['ui.tree'])

@@ -1,0 +1,24 @@
+{
+    "nodesoftApp": {
+        "post" : {
+            "home": {
+                "title": "댓글",
+                "createLabel": "새로운 댓글 생성",
+                "createOrEditLabel": "댓글을 새로 생성하거나 편집"
+            },
+            "delete": {
+                "question": "댓글을 삭제하시겠습니까 {{ id }}?"
+            },
+            "view": {
+                "title": "댓글"
+            },
+            "name": "댓글",
+            "content": "내용",
+            "root": "Root",
+            "user": "사용자",
+            "forum": "포럼",
+            "topic": "토픽",
+            "loginRequired": "댓글을 작성하려면 로그인이 필요합니다."
+        }
+    }
+}

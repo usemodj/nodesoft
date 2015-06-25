@@ -1,0 +1,153 @@
+<div>
+
+    <h2 translate="nodesoftApp.optionValue.home.title">OptionValue</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveOptionValueModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="nodesoftApp.optionValue.home.createLabel">Create a new OptionValue</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a OptionValue</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveOptionValueModal" tabindex="-1" role="dialog" aria-labelledby="myOptionValueLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="save()">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myOptionValueLabel" translate="nodesoftApp.optionValue.home.createOrEditLabel">Create or edit a OptionValue</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="optionValue.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="nodesoftApp.optionValue.name">Name</label>
+                            <input type="text" class="form-control" name="name"
+                                   ng-model="optionValue.name">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="nodesoftApp.optionValue.presentation">Presentation</label>
+                            <input type="text" class="form-control" name="presentation"
+                                   ng-model="optionValue.presentation">
+
+                        </div>
+                        <div class="form-group">
+                            <label translate="nodesoftApp.optionValue.position">Position</label>
+                            <input type="number" class="form-control" name="position"
+                                   ng-model="optionValue.position">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label translate="nodesoftApp.optionValue.optionType">optionType</label>
+                            <select class="form-control" name="optionType" ng-model="optionValue.optionType.id" ng-options="optionType.id as optionType.id for optionType in optiontypes">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteOptionValueConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(optionValue.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="nodesoftApp.optionValue.delete.question" translate-values="{id: '{{optionValue.id}}'}">Are you sure you want to delete this OptionValue?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="nodesoftApp.optionValue.name">Name</th>
+                    <th translate="nodesoftApp.optionValue.presentation">Presentation</th>
+                    <th translate="nodesoftApp.optionValue.position">Position</th>
+                    <th translate="nodesoftApp.optionValue.optionType">optionType</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="optionValue in optionValues">
+                    <td><a ui-sref="optionValueDetail({id:optionValue.id})">{{optionValue.id}}</a></td>
+                    <td>{{optionValue.name}}</td>
+                    <td>{{optionValue.presentation}}</td>
+                    <td>{{optionValue.position}}</td>
+                    <td>{{optionValue.optionType.id}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="optionValueDetail({id:optionValue.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="showUpdate(optionValue.id)"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(optionValue.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pager">
+                <li ng-show="links['first']" ng-click="loadPage(links['first'])"><a href="#">&lt;&lt;</a></li>
+                <li ng-show="links['prev']" ng-click="loadPage(links['prev'])"><a href="#">&lt;</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a href="#">&gt;</a></li>
+                <li ng-show="links['last']" ng-click="loadPage(links['last'])"><a href="#">&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

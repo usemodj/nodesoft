@@ -1,16 +1,23 @@
 package com.usemodj.nodesoft.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.Email;
-
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
 import javax.persistence.*;
+
 import org.hibernate.annotations.Type;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -39,6 +46,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Email
     @Size(max = 100)
     @Column(length = 100, unique = true, nullable = false)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String email;
 
 

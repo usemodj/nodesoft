@@ -1,5 +1,6 @@
 server:
     port: 8080
+    sessionTimeout: 20000
     
 uploadPath: src/main/webapp/upload/
 
